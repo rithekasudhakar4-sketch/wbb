@@ -1,0 +1,7 @@
+# Hospital Database File for Nalam Nagar Emergency Dispatch System
+# Format: ID,Name,LocationName,Capabilities(semicolon-separated),TotalBeds,AvailableBeds
+H1,Nalam General Hospital,Central Hospital Junction,ICU;GENERAL_WARD;TRAUMA_CENTRE,25,12
+H2,Apex Heart & Trauma Institute,Industrial Area,CARDIAC_CARE;TRAUMA_CENTRE;ICU,15,4
+H3,Grace Children & Multi-Care,Residential Colony A,PEDIATRIC_ICU;GENERAL_WARD;ICU,12,3
+H4,Sanjeevani Burn & Critical Care,College Road,BURN_UNIT;ICU;TRAUMA_CENTRE,10,2
+H5,Nalam Neuro & Stroke Care,Market Circle,STROKE_UNIT;ICU;CARDIAC_CARE,18,6

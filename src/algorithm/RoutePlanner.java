@@ -3,9 +3,15 @@ package algorithm;
 import graph.RoadGraph;
 import model.Location;
 import model.Road;
+import model.RouteResult;
 
 import java.util.*;
 
+/**
+ * Implements Dijkstra's Shortest Path Algorithm on the RoadGraph.
+ * Optimizes strictly by travel time in minutes while skipping closed roads.
+ * Time Complexity: O((V + E) log V) using a binary heap (PriorityQueue).
+ */
 public class RoutePlanner {
 
     private final RoadGraph graph;
@@ -14,162 +20,137 @@ public class RoutePlanner {
         this.graph = graph;
     }
 
-    public List<Location> findShortestRoute(
-            Location source,
-            Location destination) {
-
-        Map<Location, Double> distances = new HashMap<>();
-        Map<Location, Location> previous = new HashMap<>();
-
-        PriorityQueue<LocationDistance> priorityQueue =
-                new PriorityQueue<>(
-                        Comparator.comparingDouble(
-                                LocationDistance::getDistance
-                        )
-                );
-
-        for (Location location : graph.getLocations()) {
-            distances.put(location, Double.MAX_VALUE);
+    /**
+     * Executes Dijkstra's algorithm to find the optimal path from source to destination.
+     *
+     * @param source Starting location
+     * @param destination Target location
+     * @return RouteResult containing path, total distance, travel time, and reachability flag
+     */
+    public RouteResult planRoute(Location source, Location destination) {
+        if (source == null || destination == null) {
+            return RouteResult.unreachable();
         }
 
-        distances.put(source, 0.0);
+        if (source.equals(destination)) {
+            return new RouteResult(Collections.singletonList(source), 0.0, 0.0, true);
+        }
 
-        priorityQueue.add(
-                new LocationDistance(source, 0.0)
-        );
+        Map<Location, Double> minTime = new HashMap<>();
+        Map<Location, Location> previous = new HashMap<>();
+        Map<Location, Double> edgeDistances = new HashMap<>();
 
-        while (!priorityQueue.isEmpty()) {
+        PriorityQueue<NodeTime> pq = new PriorityQueue<>(Comparator.comparingDouble(NodeTime::getTime));
 
-            LocationDistance current =
-                    priorityQueue.poll();
+        for (Location loc : graph.getLocations()) {
+            minTime.put(loc, Double.MAX_VALUE);
+        }
 
-            Location currentLocation =
-                    current.getLocation();
+        minTime.put(source, 0.0);
+        pq.add(new NodeTime(source, 0.0));
 
-            double currentDistance =
-                    current.getDistance();
+        while (!pq.isEmpty()) {
+            NodeTime current = pq.poll();
+            Location u = current.getLocation();
+            double timeU = current.getTime();
 
-            if (currentLocation.equals(destination)) {
-                break;
+            if (u.equals(destination)) {
+                break; // Target settled with optimal time
             }
 
-            if (currentDistance >
-                    distances.get(currentLocation)) {
-                continue;
+            if (timeU > minTime.get(u)) {
+                continue; // Stale queue entry
             }
 
-            for (Road road :
-                    graph.getRoads(currentLocation)) {
+            for (Road road : graph.getActiveRoads(u)) {
+                Location v = road.getTo();
+                double altTime = timeU + road.getTravelTime();
 
-                Location neighbor =
-                        road.getTo();
-
-                double newDistance =
-                        currentDistance
-                        + road.getTravelTime();
-
-                if (newDistance <
-                        distances.get(neighbor)) {
-
-                    distances.put(
-                            neighbor,
-                            newDistance
-                    );
-
-                    previous.put(
-                            neighbor,
-                            currentLocation
-                    );
-
-                    priorityQueue.add(
-                            new LocationDistance(
-                                    neighbor,
-                                    newDistance
-                            )
-                    );
+                if (altTime < minTime.get(v)) {
+                    minTime.put(v, altTime);
+                    previous.put(v, u);
+                    edgeDistances.put(v, road.getDistance());
+                    pq.add(new NodeTime(v, altTime));
                 }
             }
         }
 
-        return buildPath(
-                previous,
-                source,
-                destination
-        );
-    }
-
-    private List<Location> buildPath(
-            Map<Location, Location> previous,
-            Location source,
-            Location destination) {
-
-        List<Location> path =
-                new ArrayList<>();
-
-        Location current = destination;
-
-        while (current != null) {
-
-            path.add(current);
-
-            if (current.equals(source)) {
-                break;
-            }
-
-            current = previous.get(current);
+        if (!previous.containsKey(destination) && !source.equals(destination)) {
+            return RouteResult.unreachable();
         }
 
-        if (!path.get(path.size() - 1).equals(source)) {
-            return new ArrayList<>();
+        List<Location> path = new ArrayList<>();
+        Location curr = destination;
+        while (curr != null) {
+            path.add(curr);
+            if (curr.equals(source)) break;
+            curr = previous.get(curr);
+        }
+
+        if (path.isEmpty() || !path.get(path.size() - 1).equals(source)) {
+            return RouteResult.unreachable();
         }
 
         Collections.reverse(path);
 
-        return path;
-    }
-
-    public double calculateRouteTime(
-            List<Location> path) {
-
-        double totalTime = 0;
+        // Calculate accurate total distance & time along reconstructed path
+        double totalTime = minTime.get(destination);
+        double totalDistance = 0.0;
 
         for (int i = 0; i < path.size() - 1; i++) {
-
             Location from = path.get(i);
             Location to = path.get(i + 1);
-
-            for (Road road : graph.getRoads(from)) {
-
-                if (road.getTo().equals(to)) {
-
-                    totalTime += road.getTravelTime();
-                    break;
-                }
+            Road r = graph.findRoad(from, to);
+            if (r != null) {
+                totalDistance += r.getDistance();
             }
         }
 
+        return new RouteResult(path, totalDistance, totalTime, true);
+    }
+
+    /**
+     * Backward-compatible helper returning list of path locations.
+     */
+    public List<Location> findShortestRoute(Location source, Location destination) {
+        RouteResult result = planRoute(source, destination);
+        return result.isReachable() ? result.getPath() : Collections.emptyList();
+    }
+
+    /**
+     * Calculates travel time across a sequence of locations.
+     */
+    public double calculateRouteTime(List<Location> path) {
+        if (path == null || path.size() < 2) return 0.0;
+        double totalTime = 0;
+        for (int i = 0; i < path.size() - 1; i++) {
+            Location from = path.get(i);
+            Location to = path.get(i + 1);
+            Road road = graph.findRoad(from, to);
+            if (road != null && !road.isClosed()) {
+                totalTime += road.getTravelTime();
+            } else {
+                return Double.MAX_VALUE; // Infeasible path due to closure/disconnect
+            }
+        }
         return totalTime;
     }
 
-    private static class LocationDistance {
-
+    private static class NodeTime {
         private final Location location;
-        private final double distance;
+        private final double time;
 
-        public LocationDistance(
-                Location location,
-                double distance) {
-
+        public NodeTime(Location location, double time) {
             this.location = location;
-            this.distance = distance;
+            this.time = time;
         }
 
         public Location getLocation() {
             return location;
         }
 
-        public double getDistance() {
-            return distance;
+        public double getTime() {
+            return time;
         }
     }
 }

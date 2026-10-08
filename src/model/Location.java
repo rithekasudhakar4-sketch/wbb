@@ -1,5 +1,10 @@
 package model;
 
+import java.util.Objects;
+
+/**
+ * Represents a geographical location / zone in the town of Nalam Nagar.
+ */
 public class Location {
     private final String id;
     private final String name;
@@ -30,7 +35,20 @@ public class Location {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(id, location.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
     public String toString() {
-        return name + " (" + latitude + ", " + longitude + ")";
+        return name;
     }
 }
