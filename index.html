@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency Ambulance Operations | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical">14</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Navigation Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <span>Home</span>
+          <span class="sep">/</span>
+          <span class="current">Emergency Dashboard</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>All 5 Ambulances & 5 Hospitals Online</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="timestamp-clock">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Today &bull; 09:44 AM IST</span>
+        </div>
+        <a href="tel:108" class="btn-action" style="background-color: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); padding: 6px 14px; font-size: 12px; font-weight: 700; text-decoration: none;">
+          📞 Helpline: 108
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="viewport-content">
+
+      <!-- Friendly Welcome & Action Bar -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Emergency Response Dashboard</h1>
+          <p>Quickly dispatch ambulances, monitor response times, and see available hospital emergency beds across Nalam Nagar.</p>
+        </div>
+        <div class="control-bar-actions" style="display: flex; gap: 8px;">
+          <button id="btn-toggle-demo" class="btn-action btn-action-secondary" onclick="toggleDemoSimulation()" style="cursor: pointer;" title="Toggle automated random emergency call generator">
+            <span>⚡ Demo Simulation</span>
+          </button>
+          <button id="btn-reset-sys" class="btn-action btn-action-secondary" onclick="resetSystem()" style="cursor: pointer;" title="Reset system back to 100% baseline">
+            <span>🔄 Reset System</span>
+          </button>
+          <a href="intake.html" class="btn-action btn-action-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span>Request Ambulance Now</span>
+          </a>
+          <a href="queue.html" id="overview-waiting-cases-btn" class="btn-action btn-action-secondary">
+            <span>View All Waiting Cases (0)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Simple, Clear KPI Cards -->
+      <section class="tactical-kpi-strip">
+        <article class="kpi-metric-box available">
+          <span class="kpi-tag">Ambulances Ready</span>
+          <span class="kpi-num" id="overview-kpi-amb">5 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">of 5</span></span>
+          <span class="kpi-note" id="overview-kpi-amb-note">Ready to dispatch immediately</span>
+        </article>
+
+        <article class="kpi-metric-box critical">
+          <span class="kpi-tag">Active Trips</span>
+          <span class="kpi-num" id="overview-kpi-trips">0 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">on the road</span></span>
+          <span class="kpi-note" id="overview-kpi-trips-note">No active transports</span>
+        </article>
+
+        <article class="kpi-metric-box cyan">
+          <span class="kpi-tag">Hospital Beds Free</span>
+          <span class="kpi-num" id="overview-kpi-beds">80 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">beds</span></span>
+          <span class="kpi-note" id="overview-kpi-beds-note">Across 5 receiving hospitals</span>
+        </article>
+
+        <article class="kpi-metric-box amber">
+          <span class="kpi-tag">Average Response Time</span>
+          <span class="kpi-num" id="overview-kpi-avg">0.0 <span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">mins</span></span>
+          <span class="kpi-note" id="overview-kpi-avg-note">From call intake to arrival</span>
+        </article>
+      </section>
+
+      <!-- Live Town Map Section -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+              <line x1="8" y1="2" x2="8" y2="18"/>
+              <line x1="16" y1="6" x2="16" y2="22"/>
+            </svg>
+            <h2>Live Town Operations Map</h2>
+          </div>
+          <span class="panel-tag available">All 12 Town Zones Connected</span>
+        </div>
+
+        <div style="padding: 16px; background-color: #0f172a; border-radius: 0 0 var(--r-lg) var(--r-lg);">
+          
+          <!-- Map Legend Bar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 8px 14px; background: rgba(30, 41, 59, 0.7); border-radius: 8px; font-size: 12px; color: #cbd5e1; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex; gap: 18px; align-items: center; flex-wrap: wrap;">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e;"></span>
+                Ambulance Fleet (5 Units)
+              </span>
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #38bdf8;"></span>
+                Active Transports
+              </span>
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 10px; height: 10px; border-radius: 2px; background: #3b82f6;"></span>
+                Receiving Hospitals (H1 - H5)
+              </span>
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                Emergency Incidents
+              </span>
+            </div>
+            <div id="map-traffic-alert" style="color: #cbd5e1; font-size: 11px;">
+              🟢 All 12 Town Zones Connected &bull; Real-time traffic synced
+            </div>
+          </div>
+
+          <!-- SVG Visual Map -->
+          <div style="width: 100%; height: 380px; position: relative;">
+            <svg viewBox="0 0 940 380" width="100%" height="100%" style="background-color: #090d16; border-radius: 8px;">
+              <!-- Road Connections -->
+              <g stroke="#334155" stroke-width="2.5" opacity="0.6">
+                <!-- RD-01 to RD-15 -->
+                <line x1="280" y1="110" x2="470" y2="90"/> <!-- L1 - L2 -->
+                <line x1="280" y1="110" x2="220" y2="210"/> <!-- L1 - L3 -->
+                <line x1="470" y1="90" x2="660" y2="100"/> <!-- L2 - L4 -->
+                <line x1="220" y1="210" x2="380" y2="280"/> <!-- L3 - L5 -->
+                <line x1="660" y1="100" x2="740" y2="210"/> <!-- L4 - L6 -->
+                <line x1="380" y1="280" x2="570" y2="270"/> <!-- L5 - L6 -->
+                <line x1="470" y1="90" x2="480" y2="180"/> <!-- L2 - L8 -->
+                <line x1="220" y1="210" x2="130" y2="300"/> <!-- L3 - L9 -->
+                <line x1="380" y1="280" x2="390" y2="350"/> <!-- L5 - L11 -->
+                <line x1="660" y1="100" x2="840" y2="140"/> <!-- L4 - L7 -->
+                <line x1="570" y1="270" x2="700" y2="330"/> <!-- L6 - L10 -->
+                <line x1="840" y1="140" x2="700" y2="330"/> <!-- L7 - L10 -->
+                <line x1="480" y1="180" x2="520" y2="40"/>  <!-- L8 - L12 -->
+                <line x1="130" y1="300" x2="390" y2="350"/> <!-- L9 - L11 -->
+                <line x1="700" y1="330" x2="390" y2="350"/> <!-- L10 - L11 -->
+              </g>
+
+              <!-- Dynamic Ambulance Route (Shown when active) -->
+              <g id="map-active-route" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 4" style="display: none;">
+                <line x1="570" y1="270" x2="380" y2="280"/>
+                <line x1="380" y1="280" x2="220" y2="210"/>
+              </g>
+
+              <!-- Closed Road (RD-16: L1 to L12) -->
+              <line x1="280" y1="110" x2="520" y2="40" stroke="#ef4444" stroke-width="3" stroke-dasharray="4 6" opacity="0.8"/>
+
+              <!-- Town Zones (L1 to L12) -->
+              <!-- L1 Central Hospital Junction -->
+              <g id="map-node-L1" transform="translate(280, 110)">
+                <circle r="22" fill="#1e293b" stroke="#3b82f6" stroke-width="3"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L1</text>
+                <text text-anchor="middle" dy="32" fill="#94a3b8" font-size="10" font-weight="600">Central Hosp &bull; H1</text>
+              </g>
+
+              <!-- L2 Market Circle -->
+              <g id="map-node-L2" transform="translate(470, 90)">
+                <circle r="18" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L2</text>
+                <text text-anchor="middle" dy="28" fill="#94a3b8" font-size="10">Market Circle &bull; H5</text>
+              </g>
+
+              <!-- L3 Residential Colony A -->
+              <g id="map-node-L3" transform="translate(220, 210)">
+                <circle r="18" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L3</text>
+                <text text-anchor="middle" dy="28" fill="#94a3b8" font-size="10">Residential Colony A</text>
+              </g>
+
+              <!-- L4 Industrial Area -->
+              <g id="map-node-L4" transform="translate(660, 100)">
+                <circle r="18" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L4</text>
+                <text text-anchor="middle" dy="28" fill="#94a3b8" font-size="10">Industrial Hub &bull; H2</text>
+              </g>
+
+              <!-- L5 College Road -->
+              <g id="map-node-L5" transform="translate(380, 280)">
+                <circle r="18" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L5</text>
+                <text text-anchor="middle" dy="28" fill="#94a3b8" font-size="10">College Rd &bull; H4</text>
+              </g>
+
+              <!-- L6 Town Bus Terminal -->
+              <g id="map-node-L6" transform="translate(570, 270)">
+                <circle r="18" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="11" font-weight="700">L6</text>
+                <text text-anchor="middle" dy="28" fill="#94a3b8" font-size="10">Bus Terminal</text>
+              </g>
+
+              <!-- L7 Greenfield Suburb -->
+              <g id="map-node-L7" transform="translate(840, 140)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L7</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">Greenfield</text>
+              </g>
+
+              <!-- L8 Tech Park -->
+              <g id="map-node-L8" transform="translate(480, 180)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L8</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">Tech Park</text>
+              </g>
+
+              <!-- L9 Old City Bazaar -->
+              <g id="map-node-L9" transform="translate(130, 300)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L9</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">Old City Bazaar</text>
+              </g>
+
+              <!-- L10 Highway Bypass -->
+              <g id="map-node-L10" transform="translate(700, 330)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L10</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">Highway Bypass</text>
+              </g>
+
+              <!-- L11 Riverside Gardens -->
+              <g id="map-node-L11" transform="translate(390, 350)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L11</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">Riverside</text>
+              </g>
+
+              <!-- L12 North Gate -->
+              <g id="map-node-L12" transform="translate(520, 40)">
+                <circle r="16" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+                <text text-anchor="middle" dy="4" fill="#ffffff" font-size="10">L12</text>
+                <text text-anchor="middle" dy="26" fill="#94a3b8" font-size="10">North Gate</text>
+              </g>
+
+              <!-- Moving Ambulance Callout -->
+              <g id="overview-map-ambulance-callout" transform="translate(420, 240)" style="display: none;">
+                <rect x="-10" y="-12" width="160" height="24" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                <text id="overview-map-ambulance-text" x="70" y="4" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700">🚑 AMB En Route</text>
+              </g>
+            </svg>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 2-Column Overview: Active Emergencies & Hospital Status -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 22px; margin-bottom: 24px;">
+
+        <!-- Left: Active Emergencies in Progress -->
+        <section class="panel-card" style="margin-bottom: 0;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <h2 id="overview-emergencies-title">Active Emergencies in Progress (0)</h2>
+            </div>
+            <a href="queue.html" style="font-size: 12px; color: var(--accent-blue); font-weight: 600; text-decoration: none;">View Queue &rarr;</a>
+          </div>
+
+          <div id="overview-emergencies-container" style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="text-align: center; padding: 28px 16px; color: var(--text-muted);">
+              <div style="font-size: 28px; margin-bottom: 6px;">🛡️</div>
+              <strong style="color: var(--text-main); font-size: 14px;">No Active Emergencies in Progress</strong>
+              <p style="font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; margin-bottom: 12px;">All 5 ambulances are standing by at base stations.</p>
+              <a href="intake.html" class="btn-action btn-action-primary" style="font-size: 12px; padding: 5px 12px; display: inline-block;">+ Intake New Emergency Call</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right: Hospital Bed Availability -->
+        <section class="panel-card" style="margin-bottom: 0;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <h2>Hospital Beds & Specializations</h2>
+            </div>
+            <a href="hospitals.html" style="font-size: 12px; color: var(--accent-blue); font-weight: 600; text-decoration: none;">View All 5 &rarr;</a>
+          </div>
+
+          <div id="overview-hospitals-container" style="padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+            <!-- Dynamically populated from /api/hospitals -->
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
