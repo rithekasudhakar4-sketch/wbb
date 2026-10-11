@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance Fleet Status & Locations | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical" id="nav-queue-count" style="display:none;">0</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Ambulance Fleet Status</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator" id="fleet-tactical-indicator">
+          <span class="pulse-dot"></span>
+          <span>Loading fleet data...</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="intake.html" class="btn-action btn-action-primary" style="padding: 6px 14px; font-size: 12px;">
+          + Dispatch Ambulance
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <main class="viewport-content">
+
+      <!-- View Title -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Ambulance Fleet Status & Locations</h1>
+          <p>Real-time vehicle status, parking stations, active trips, and paramedic team assignments across town.</p>
+        </div>
+        <div class="control-bar-actions">
+          <a href="dispatch.html" class="btn-action btn-action-secondary">
+            <span>View Active Trip Map</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Fleet Readiness KPI Strip -->
+      <section class="tactical-kpi-strip">
+        <article class="kpi-metric-box available">
+          <span class="kpi-tag">Ambulances Ready</span>
+          <span class="kpi-num" id="fleet-kpi-ready">0</span>
+          <span class="kpi-note" id="fleet-kpi-ready-note">—</span>
+        </article>
+
+        <article class="kpi-metric-box critical">
+          <span class="kpi-tag">Driving to Patient</span>
+          <span class="kpi-num" id="fleet-kpi-patient">0</span>
+          <span class="kpi-note" id="fleet-kpi-patient-note">None</span>
+        </article>
+
+        <article class="kpi-metric-box amber">
+          <span class="kpi-tag">Transporting to Hospital</span>
+          <span class="kpi-num" id="fleet-kpi-hospital">0</span>
+          <span class="kpi-note" id="fleet-kpi-hospital-note">None</span>
+        </article>
+
+        <article class="kpi-metric-box cyan">
+          <span class="kpi-tag">Trips Completed Today</span>
+          <span class="kpi-num" id="fleet-kpi-trips">0</span>
+          <span class="kpi-note" id="fleet-kpi-trips-note">—</span>
+        </article>
+      </section>
+
+      <!-- Fleet Roster Table -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+            <h2>All 5 Ambulances (Roster & Availability)</h2>
+          </div>
+          <span class="badge badge-assigned">All 5 Vehicles Monitored</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="tactical-table">
+            <thead>
+              <tr>
+                <th>Ambulance</th>
+                <th>Base Station Area</th>
+                <th>Current Status</th>
+                <th>Assigned Patient / Emergency</th>
+                <th>Destination Hospital</th>
+                <th>ETA</th>
+                <th>Trips Done</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="fleet-tbody">
+              <!-- Dynamically populated from Java REST API -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

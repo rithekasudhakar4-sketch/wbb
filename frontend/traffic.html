@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road Traffic & Active Delays | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical">14</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Roads & Traffic Conditions</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot" style="background-color: var(--accent-amber);"></span>
+          <span>15 Routes Open &bull; 1 Road Detour Active (North Gate)</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="index.html" class="btn-action btn-action-secondary" style="padding: 6px 14px; font-size: 12px;">
+          View Town Map
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <main class="viewport-content">
+
+      <!-- View Title -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Road Traffic & Active Delays</h1>
+          <p>Real-time travel times between town areas. Closed or congested roads are automatically avoided by ambulance drivers.</p>
+        </div>
+      </div>
+
+      <!-- Road Closure Alert Card -->
+      <section style="background-color: #fef2f2; border: 1px solid #fecaca; border-left: 5px solid var(--accent-red); border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 26px;">🚧</span>
+          <div>
+            <strong style="color: var(--accent-red); font-size: 14px;">Road Closure Alert: North Gate Route (RD-16) Closed</strong>
+            <p style="font-size: 13px; color: var(--text-secondary); margin: 2px 0 0 0;">
+              The road connecting <strong>Central Hospital (L1) and North Gate (L12)</strong> is closed due to emergency water pipe repair. All ambulances are automatically detoured through Tech Park (L8).
+            </p>
+          </div>
+        </div>
+        <span class="badge badge-critical">Detour in effect</span>
+      </section>
+
+      <!-- KPI Strip -->
+      <section class="tactical-kpi-strip">
+        <article class="kpi-metric-box available">
+          <span class="kpi-tag">Open Roads</span>
+          <span class="kpi-num" id="traffic-kpi-open">16</span>
+          <span class="kpi-note">Clear for normal travel</span>
+        </article>
+
+        <article class="kpi-metric-box critical">
+          <span class="kpi-tag">Closed Roads</span>
+          <span class="kpi-num" id="traffic-kpi-closed">0</span>
+          <span class="kpi-note">Roads currently blocked</span>
+        </article>
+
+        <article class="kpi-metric-box amber">
+          <span class="kpi-tag">Slow / Congested</span>
+          <span class="kpi-num" id="traffic-kpi-slow">0</span>
+          <span class="kpi-note">Roads with active delays</span>
+        </article>
+
+        <article class="kpi-metric-box cyan">
+          <span class="kpi-tag">Average Drive Time</span>
+          <span class="kpi-num" id="traffic-kpi-avg">9.0 <span style="font-size: 15px; color: var(--text-muted); font-weight: 500;">mins</span></span>
+          <span class="kpi-note">Between connected neighborhoods</span>
+        </article>
+      </section>
+
+      <!-- 16 Road Routes Table -->
+      <section class="panel-card">
+        <div class="panel-header">
+          <div class="panel-title">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+            </svg>
+            <h2>All 16 Town Road Connections</h2>
+          </div>
+          <span class="badge badge-assigned">Live Status Updates</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="tactical-table">
+            <thead>
+              <tr>
+                <th>Connecting Areas</th>
+                <th>Distance</th>
+                <th>Travel Time</th>
+                <th>Traffic Condition</th>
+                <th>Ambulance Route Status</th>
+              </tr>
+            </thead>
+            <tbody id="traffic-tbody">
+              <!-- Dynamically populated from Java REST API (/api/roads) -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

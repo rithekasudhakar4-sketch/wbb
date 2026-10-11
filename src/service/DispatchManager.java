@@ -53,6 +53,15 @@ public class DispatchManager {
         System.out.println("===============================================================\n");
     }
 
+    /**
+     * Silently enqueues an existing emergency from the database on startup without banner logs.
+     */
+    public void restoreEmergencyRequest(EmergencyRequest request) {
+        if (request == null) return;
+        requestQueue.add(request);
+        totalRequestsProcessed++;
+    }
+
     public List<EmergencyRequest> getPendingRequests() {
         PriorityQueue<EmergencyRequest> copy = new PriorityQueue<>(requestQueue);
         List<EmergencyRequest> pending = new ArrayList<>();
@@ -68,6 +77,24 @@ public class DispatchManager {
 
     public int getPendingQueueSize() {
         return requestQueue.size();
+    }
+
+    public EmergencyRequest peekNextRequest() {
+        return requestQueue.peek();
+    }
+
+    public EmergencyRequest pollNextRequest() {
+        return requestQueue.poll();
+    }
+
+    public boolean removeRequest(EmergencyRequest req) {
+        return requestQueue.remove(req);
+    }
+
+    public synchronized void clearAll() {
+        requestQueue.clear();
+        resolvedRequests.clear();
+        totalRequestsProcessed = 0;
     }
 
     /**
@@ -139,10 +166,11 @@ public class DispatchManager {
 
         // Reserve Bed and Update Vehicle State
         chosenHospital.admitPatient();
-        chosenAmbulance.setStatus(AmbulanceStatus.BUSY);
-        chosenAmbulance.setTargetLocation(chosenHospital.getLocation());
+        chosenAmbulance.setStatus(AmbulanceStatus.EN_ROUTE_PATIENT);
+        chosenAmbulance.setTargetLocation(patientLoc);
         chosenAmbulance.setAssignedHospital(chosenHospital);
         chosenAmbulance.setAssignedRequest(request);
+        chosenAmbulance.setEtaMinutes(ambToPatientTime);
 
         request.setAssignedAmbulance(chosenAmbulance);
         request.setAssignedHospital(chosenHospital);

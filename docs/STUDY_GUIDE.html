@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nalam Nagar Emergency Dispatch — Complete Study Guide & Viva Defense</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --dark: #0f172a;
+      --slate: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg-card: #ffffff;
+      --bg-page: #f8fafc;
+      --code-bg: #1e293b;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-page);
+      color: var(--slate);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* Layout */
+    .guide-container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sticky Sidebar Navigation */
+    .guide-sidebar {
+      width: 300px;
+      background: #ffffff;
+      border-right: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 24px 18px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .brand-text h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.2px;
+    }
+
+    .brand-text p {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .toc-list {
+      list-style: none;
+    }
+
+    .toc-list li {
+      margin-bottom: 4px;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .toc-link:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .toc-sublist {
+      list-style: none;
+      padding-left: 14px;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .toc-sublist .toc-link {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 8px;
+    }
+
+    .toc-sublist .toc-link:hover {
+      color: var(--primary);
+    }
+
+    /* Main Content Area */
+    .guide-content {
+      flex: 1;
+      padding: 48px 56px;
+      max-width: 1060px;
+    }
+
+    /* Headers */
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .doc-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--slate);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 14px;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 14px;
+      border-left: 4px solid;
+    }
+
+    .callout-remember {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1e40af;
+    }
+
+    .callout-mistake {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    .callout-viva {
+      background: #f0fdf4;
+      border-color: #22c55e;
+      color: #166534;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 13.5px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #f1f5f9;
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #f8fafc;
+    }
+
+    /* Code Blocks */
+    pre {
+      background: var(--code-bg);
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.5;
+      margin: 16px 0;
+      border: 1px solid #334155;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    /* Accordion Details / Summary */
+    details {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    details[open] {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-color: #cbd5e1;
+    }
+
+    summary {
+      padding: 12px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--dark);
+      background: #ffffff;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "➕";
+      font-size: 12px;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::after {
+      content: "➖";
+    }
+
+    .details-body {
+      padding: 14px 18px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Badge Tags */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .badge-critical { background: #fee2e2; color: #dc2626; }
+    .badge-serious { background: #fef3c7; color: #d97706; }
+    .badge-minor { background: #dcfce7; color: #16a34a; }
+    .badge-code { background: #e0f2fe; color: #0284c7; }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .card h4 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    /* Print Styles */
+    @media print {
+      .guide-sidebar {
+        display: none !important;
+      }
+      .guide-content {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 12pt !important;
+      }
+      details {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      details summary {
+        display: block !important;
+      }
+      .details-body {
+        display: block !important;
+        background: none !important;
+        border: none !important;
+        padding-left: 0 !important;
+      }
+      .callout {
+        border-left: 2pt solid #000 !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000 !important;
+      }
+    }
+  </style>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
+</head>
+<body>
+
+<div class="guide-container">
+
+  <!-- Sticky Sidebar -->
+  <aside class="guide-sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">🚑</div>
+      <div class="brand-text">
+        <h2>NALAM NAGAR CAD</h2>
+        <p>Comprehensive Study Guide</p>
+      </div>
+    </div>
+
+    <div class="toc-title">Table of Contents</div>
+    <ul class="toc-list">
+      <li><a href="#section-1" class="toc-link">1. The Big Picture</a>
+        <ul class="toc-sublist">
+          <li><a href="#sec-1-1" class="toc-link">The Problem We Solve</a></li>
+          <li><a href="#sec-1-2" class="toc-link">Ravi's Emergency Story</a></li>
+          <li><a href="#sec-1-3" class="toc-link">The 4-Layer Architecture</a></li>
+          <li><a href="#sec-1-4" class="toc-link">Life of an Emergency</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-2" class="toc-link">2. Concepts Explained Simply</a>
+        <ul class="toc-sublist">
+          <li><a href="#sec-2-1" class="toc-link">Graph & RoadGraph</a></li>
+          <li><a href="#sec-2-2" class="toc-link">Dijkstra's Algorithm</a></li>
+          <li><a href="#sec-2-3" class="toc-link">PriorityQueue Triage</a></li>
+          <li><a href="#sec-2-4" class="toc-link">Two-Leg Dispatch</a></li>
+          <li><a href="#sec-2-5" class="toc-link">REST API & JSON</a></li>
+          <li><a href="#sec-2-6" class="toc-link">Embedded HTTP Server</a></li>
+          <li><a href="#sec-2-7" class="toc-link">Concurrency & Preemption</a></li>
+          <li><a href="#sec-2-8" class="toc-link">Frontend Polling</a></li>
+          <li><a href="#sec-2-9" class="toc-link">Database & Transactions</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-3" class="toc-link">3. Code Walkthroughs</a></li>
+      <li><a href="#section-4" class="toc-link">4. Visuals & Diagrams</a></li>
+      <li><a href="#section-5" class="toc-link">5. Decisions & Trade-Offs</a></li>
+      <li><a href="#section-6" class="toc-link">6. How to Run & Test</a></li>
+      <li><a href="#section-7" class="toc-link">7. Viva & Defense Prep</a></li>
+      <li><a href="#section-8" class="toc-link">8. Self-Test & Exercises</a></li>
+      <li><a href="#section-9" class="toc-link">9. Technical Glossary</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="guide-content">
+
+    <h1>Nalam Nagar Emergency Dispatch & Route Optimization</h1>
+    <div class="doc-subtitle">Complete Student Study Material, Code Walkthrough, and Viva Defense Guide (Pure Java, Zero Frameworks)</div>
+
+    <!-- SECTION 1 -->
+    <section id="section-1">
+      <h2>1. The Big Picture</h2>
+
+      <h3 id="sec-1-1">1.1 The Operational Problem in Nalam Nagar</h3>
+      <p>Imagine a growing town named <strong>Nalam Nagar</strong> with 12 residential, industrial, and commercial zones. In traditional manual emergency response centers, dispatchers face four critical flaws:</p>
+      <ul>
+        <li><strong>Triage Inversion (First-Come Trap):</strong> If a patient calls with a mild sprained ankle at 10:00 AM and another patient suffers a cardiac arrest at 10:01 AM, a simple FIFO queue sends the available ambulance to the ankle sprain. The cardiac patient dies waiting.</li>
+        <li><strong>Distance vs. Time Fallacy:</strong> Assigning an ambulance because it is geographically 2 km away often results in long delays if that road is congested or blocked by construction, while a 4 km highway bypass could be 10 minutes faster.</li>
+        <li><strong>Hospital Specialty & Bed Mismatch:</strong> Patients are rushed to the nearest clinic, only to discover at the door that it lacks an ICU or has zero available beds, requiring a dangerous second transfer.</li>
+        <li><strong>Fleet Repositioning Blindness:</strong> After dropping off a patient at a hospital, an ambulance is now stationed at that hospital zone. Manual centers forget this and dispatch units from distant stations.</li>
+      </ul>
+
+      <h3 id="sec-1-2">1.2 Real-Life Scenario: Ravi's Emergency</h3>
+      <p>Let's follow a single emergency from start to finish:</p>
+      <ol style="margin-left: 20px; margin-bottom: 16px;">
+        <li><strong>The Accident:</strong> At 10:15 AM, <strong>Ravi Sharma</strong> suffers severe industrial burn injuries at <strong>Residential Colony A (Zone L3)</strong>.</li>
+        <li><strong>Call Intake:</strong> The operator enters the details: Patient: Ravi Sharma, Location: <code>L3</code>, Condition: <code>BURN</code>, Severity: <code>CRITICAL</code>, Unit: <code>BURN_UNIT</code>.</li>
+        <li><strong>Triage Enqueue:</strong> The system assigns <code>CRITICAL</code> (priority 0). Even with 5 minor flu calls already waiting, Ravi jumps immediately to <strong>Rank #1</strong>.</li>
+        <li><strong>Hospital Selection:</strong> The system scans all 5 hospitals. Only <strong>Sanjeevani Burn & Critical Care (H4)</strong> at <strong>College Road (L5)</strong> has a dedicated Burn Unit. The system verifies H4 has 2 free beds and calculates the fastest path from L3 to L5 (4.0 km, 9.0 min), reserving a bed instantly.</li>
+        <li><strong>Ambulance Selection:</strong> The system checks available ambulances:
+          <ul>
+            <li><code>AMB-1</code> at Central Hospital: 12.0 min away</li>
+            <li><code>AMB-2</code> at Bus Terminal: 15.0 min away</li>
+            <li><code>AMB-5</code> at Market Circle: <strong>7.0 min away</strong> (Winner!)</li>
+          </ul>
+        </li>
+        <li><strong>Look-Ahead Total Mission Time:</strong> $7.0\text{ min (Amb } \to \text{ Pt)} + 9.0\text{ min (Pt } \to \text{ Hosp)} = \mathbf{16.0\text{ minutes}}$.</li>
+        <li><strong>Delivery & Repositioning:</strong> AMB-5 delivers Ravi to Sanjeevani Hospital (H4). Once admitted, AMB-5 is freed and stationed at <strong>College Road (L5)</strong>, ready for the next call in that district.</li>
+      </ol>
+
+      <h3 id="sec-1-3">1.3 System Architecture (The 4 Layers)</h3>
+      <div class="mermaid">
+      graph TD
+          UI["1. Client Layer<br>HTML5 / CSS3 / Vanilla JS (app.js)<br>Polls /api/* every 2 seconds"]
+          WS["2. Web Server Layer<br>com.sun.net.httpserver.HttpServer (Port 8080)<br>18 REST Endpoints & Static Files"]
+          Core["3. Service & Algorithm Layer<br>DispatchManager (PriorityQueue Triage)<br>RoutePlanner (Dijkstra Shortest Path)<br>AutoDispatcher (Scheduled Daemon)"]
+          Data["4. Data & Persistence Layer<br>RoadGraph (Adjacency List in memory)<br>DAOs & SQLite (nalam_nagar.db)"]
+
+          UI -->|HTTP GET/POST| WS
+          WS --> Core
+          Core --> Data
+      </div>
+
+      <h3 id="sec-1-4">1.4 Numbered Timeline: Life of One Emergency</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Event</th>
+            <th>File Involved</th>
+            <th>Exact Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Form Submission</td>
+            <td><code>frontend/intake.html</code></td>
+            <td><code>handleIntakeSubmit()</code></td>
+            <td>Interceps form submission and sends <code>POST /api/intake</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td>HTTP Processing</td>
+            <td><code>src/WebServer.java</code></td>
+            <td><code>IntakeHandler.handle()</code></td>
+            <td>Validates parameters, resolves zone ID into <code>Location</code> object.</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td>Model Creation</td>
+            <td><code>src/model/EmergencyRequest.java</code></td>
+            <td><code>new EmergencyRequest(...)</code></td>
+            <td>Assigns unique ID (<code>REQ-101</code>) and captures epoch timestamp.</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td>Priority Enqueue</td>
+            <td><code>src/service/DispatchManager.java</code></td>
+            <td><code>addEmergencyRequest(req)</code></td>
+            <td>Inserts into <code>PriorityQueue</code>. Min-heap puts Critical at top.</td>
+          </tr>
+          <tr>
+            <td><strong>5</strong></td>
+            <td>DB Persistence</td>
+            <td><code>src/dao/EmergencyDao.java</code></td>
+            <td><code>insert(req)</code></td>
+            <td>Executes parameterized SQL INSERT via JDBC PreparedStatement.</td>
+          </tr>
+          <tr>
+            <td><strong>6</strong></td>
+            <td>Daemon Trigger</td>
+            <td><code>src/service/AutoDispatcher.java</code></td>
+            <td><code>trigger()</code></td>
+            <td>Wakes background daemon asynchronously without blocking HTTP response.</td>
+          </tr>
+          <tr>
+            <td><strong>7</strong></td>
+            <td>Hospital Matching</td>
+            <td><code>src/service/HospitalManager.java</code></td>
+            <td><code>evaluateAndSelectHospital()</code></td>
+            <td>Finds hospital with required <code>Capability</code>, free beds, and lowest Dijkstra ETA.</td>
+          </tr>
+          <tr>
+            <td><strong>8</strong></td>
+            <td>Ambulance Selection</td>
+            <td><code>src/service/AmbulanceManager.java</code></td>
+            <td><code>findFastestAmbulance()</code></td>
+            <td>Runs Dijkstra for all available ambulances to patient, picks fastest unit.</td>
+          </tr>
+          <tr>
+            <td><strong>9</strong></td>
+            <td>ACID Transaction</td>
+            <td><code>src/service/AutoDispatcher.java</code></td>
+            <td><code>persistDispatchTransaction()</code></td>
+            <td><code>conn.setAutoCommit(false)</code>: updates ambulance, hospital, emergency, and commits.</td>
+          </tr>
+          <tr>
+            <td><strong>10</strong></td>
+            <td>Simulated Trips</td>
+            <td><code>src/service/AutoDispatcher.java</code></td>
+            <td><code>startTripSimulation()</code></td>
+            <td>4s for Leg 1 (Amb to Pt), 4s for Leg 2 (Pt to Hosp).</td>
+          </tr>
+          <tr>
+            <td><strong>11</strong></td>
+            <td>Trip Completion</td>
+            <td><code>src/service/AutoDispatcher.java</code></td>
+            <td><code>completeTripInternal()</code></td>
+            <td>Frees vehicle at hospital zone, records audit row in <code>trips</code> table.</td>
+          </tr>
+          <tr>
+            <td><strong>12</strong></td>
+            <td>Bed Circulation</td>
+            <td><code>src/service/AutoDispatcher.java</code></td>
+            <td><code>scheduler.schedule(..., 10s)</code></td>
+            <td>Releases hospital bed after 10s for dynamic bed circulation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="section-2">
+      <h2>2. Concepts Explained Simply</h2>
+
+      <!-- Concept 1 -->
+      <h3 id="sec-2-1">Concept 1: Graph Network & RoadGraph</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> Think of a town road map as a connect-the-dots drawing. The dots (neighborhoods, crossroads) are <strong>Nodes</strong>. The lines (roads, avenues) are <strong>Edges</strong>.</p>
+        <p><strong>Plain Explanation:</strong> A graph stores connections between points. In Nalam Nagar, roads are bidirectional and store two weights: physical distance in km and <strong>travel time in minutes</strong>. Our system strictly optimizes for travel time in minutes.</p>
+        <p><strong>Small Example with Numbers:</strong> Node L1 (Central Hospital) connects to Node L6 (Bus Terminal) with Distance = 2.5 km and Travel Time = 6.0 minutes.</p>
+        <p><strong>Where it appears in MY code:</strong> <code>src/graph/RoadGraph.java</code> using <code>private final Map&lt;Location, List&lt;Road&gt;&gt; adjacencyList;</code>.</p>
+        <div class="callout callout-mistake">
+          <div class="callout-title">⚠️ Common Mistake</div>
+          Using a 2D Matrix (<code>double[][]</code>) for a sparse graph. With 12 nodes and only 16 roads, an Adjacency Matrix wastes space on empty cells ($O(V^2)$). An Adjacency List only stores roads that actually exist ($O(V + E)$).
+        </div>
+      </div>
+
+      <!-- Concept 2 -->
+      <h3 id="sec-2-2">Concept 2: Dijkstra's Algorithm & RoutePlanner</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> Water spreading through irrigation trenches. It fills the closest trench first, then ripples outward into the next closest branch.</p>
+        <p><strong>Plain Explanation:</strong> Dijkstra's Algorithm guarantees the shortest path from a starting node to all other nodes on graphs with non-negative edge weights ($w \ge 0$). It maintains a <strong>Distance Table</strong> and a <strong>Min-Heap Priority Queue</strong> to explore the node with the smallest accumulated travel time next.</p>
+        
+        <h4>Step-by-Step Distance Table Progression (From L1 to L8):</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Extracted Node</th>
+              <th>Time</th>
+              <th>Inspected Neighbor</th>
+              <th>Edge Time</th>
+              <th>Calculated Time</th>
+              <th>Previous Best</th>
+              <th>Table Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Init</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>L1 = 0.0</td>
+              <td>$\infty$</td>
+              <td>Set L1 = 0.0</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>L1</td>
+              <td>0.0</td>
+              <td>L9, L6, L3, L11</td>
+              <td>5.0, 6.0, 12.0, 9.0</td>
+              <td>0 + 5.0 = 5.0 ...</td>
+              <td>$\infty$</td>
+              <td>Update L9, L6, L3, L11</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>L9</td>
+              <td>5.0</td>
+              <td>L4</td>
+              <td>10.0</td>
+              <td>5.0 + 10.0 = 15.0</td>
+              <td>$\infty$</td>
+              <td>Update L4 = 15.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>L6</td>
+              <td>6.0</td>
+              <td>L2, L7</td>
+              <td>8.0, 11.0</td>
+              <td>6.0 + 8.0 = 14.0</td>
+              <td>$\infty$</td>
+              <td>Update L2 = 14.0</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>L2</td>
+              <td>14.0</td>
+              <td>L8</td>
+              <td>15.0</td>
+              <td>14.0 + 15.0 = 29.0</td>
+              <td>$\infty$</td>
+              <td>Update L8 = 29.0</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>L8</td>
+              <td>29.0</td>
+              <td>Destination Reached!</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Terminates!</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>Optimal Path Reconstructed:</strong> <code>L1 -> L6 -> L2 -> L8</code> with Total Travel Time = <strong>29.0 minutes</strong> (12.0 km).</p>
+        <p><strong>Time Complexity:</strong> $O((V + E) \log V)$. For Nalam Nagar ($V=12, E=32$), it takes $\approx 157$ operations, executing in under 0.1 milliseconds!</p>
+        <div class="callout callout-viva">
+          <div class="callout-title">💡 Viva Tip</div>
+          Why do we have <code>if (timeU &gt; minTime.get(u)) continue;</code> in <code>RoutePlanner.java</code>? Because Java's <code>PriorityQueue</code> lacks an $O(\log V)$ <code>decreaseKey()</code>. We add new entries when edge relaxations improve distances, and discard stale duplicate entries when they are polled.
+        </div>
+      </div>
+
+      <!-- Concept 3 -->
+      <h3 id="sec-2-3">Concept 3: PriorityQueue Triage</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> An Emergency Room triage nurse. A cardiac arrest patient arriving at 10:05 AM is treated immediately ahead of a mild flu patient who arrived at 10:00 AM.</p>
+        <p><strong>Plain Explanation:</strong> A `PriorityQueue` serves elements based on priority instead of FIFO arrival. In Java, it is backed by a Binary Min-Heap.</p>
+        <p><strong>Why it beats sorting a List:</strong> Inserting into a `PriorityQueue` is $O(\log N)$ and peeking the top is $O(1)$. Re-sorting an `ArrayList` on every call takes $O(N \log N)$, causing severe lags during mass-casualty events.</p>
+        <p><strong>Where it appears in MY code:</strong> <code>src/model/EmergencyRequest.java</code>:</p>
+        <pre><code>@Override
+public int compareTo(EmergencyRequest other) {
+    // 1. Primary order: CRITICAL (0) < SERIOUS (1) < MINOR (2)
+    int severityComparison = Integer.compare(this.severity.ordinal(), other.severity.ordinal());
+    if (severityComparison != 0) {
+        return severityComparison;
+    }
+    // 2. Secondary order (FIFO for tie-breaking): earlier timestamp comes first
+    return Long.compare(this.timestamp, other.timestamp);
+}</code></pre>
+      </div>
+
+      <!-- Concept 4 -->
+      <h3 id="sec-2-4">Concept 4: Two-Leg Dispatch Logic</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> Calling an Uber to take you to the airport. The system must find the driver closest to you (Leg 1), and then calculate the route from you to the airport (Leg 2).</p>
+        <p><strong>Plain Explanation:</strong> Emergency dispatch combines two legs:
+          $$\text{Leg 1 (Response): } \text{Ambulance} \to \text{Patient} \quad (\text{lowest response time})$$
+          $$\text{Leg 2 (Transport): } \text{Patient} \to \text{Hospital} \quad (\text{appropriate medical unit and free beds})$$
+          $$\text{Total Mission Time} = \text{ETA}(\text{Leg 1}) + \text{ETA}(\text{Leg 2})$$
+        </p>
+        <p><strong>Where it appears in MY code:</strong> <code>DispatchManager.java</code> (lines 130–165) and <code>AutoDispatcher.java</code> (lines 143–223).</p>
+      </div>
+
+      <!-- Concept 5 -->
+      <h3 id="sec-2-5">Concept 5: REST API and JSON</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> A restaurant waiter carrying standard order slips between diner tables (the browser) and the kitchen chef (the Java backend).</p>
+        <p><strong>Plain Explanation:</strong> REST uses standard HTTP verbs (<code>GET</code> to fetch data, <code>POST</code> to submit data). JSON is human-readable text formatting data into key-value pairs (e.g. <code>{"patientName": "Ravi", "severity": "CRITICAL"}</code>).</p>
+      </div>
+
+      <!-- Concept 6 -->
+      <h3 id="sec-2-6">Concept 6: Embedded HTTP Server (`WebServer`)</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> A mobile coffee cart with its own built-in generator and espresso machine that operates without renting an entire commercial building.</p>
+        <p><strong>Plain Explanation:</strong> Instead of heavy enterprise servers like Tomcat or Spring Boot, we use Java's built-in <code>com.sun.net.httpserver.HttpServer</code> on port 8080. It starts in under 1 second with zero external dependencies.</p>
+        <p><strong>Where it appears in MY code:</strong> <code>src/WebServer.java</code>.</p>
+      </div>
+
+      <!-- Concept 7 -->
+      <h3 id="sec-2-7">Concept 7: Concurrency, Thread Safety & Preemption</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> Two dispatchers sharing a single physical clipboard. Whoever holds the clipboard has exclusive access to assign ambulances, preventing both from assigning the same vehicle.</p>
+        <p><strong>Plain Explanation:</strong> The web server handles HTTP requests on worker threads while <code>AutoDispatcher</code> runs on a background daemon. To prevent race conditions, both synchronize on <code>dispatchLock</code>.</p>
+        <p><strong>What is Preemption?</strong> If an ambulance is en route to a Minor call and an urgent Critical cardiac call arrives with no free fleet units, the system re-routes the ambulance to the Critical patient and puts the Minor call back into the queue.</p>
+        <p><strong>Where it appears in MY code:</strong> <code>src/service/AutoDispatcher.java</code> (lines 125 and 260–301).</p>
+      </div>
+
+      <!-- Concept 8 -->
+      <h3 id="sec-2-8">Concept 8: Frontend Polling</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> Checking the oven every 2 minutes while baking cookies to see if they are ready.</p>
+        <p><strong>Plain Explanation:</strong> In <code>frontend/app.js</code>, <code>setInterval(pollCurrentPage, 2000)</code> queries <code>/api/status</code>, <code>/api/queue</code>, and <code>/api/ambulances</code> every 2 seconds to update the screen live without a page refresh.</p>
+      </div>
+
+      <!-- Concept 9 -->
+      <h3 id="sec-2-9">Concept 9: Relational Database & Transactions</h3>
+      <div class="card">
+        <p><strong>Real-Life Analogy:</strong> An ATM cash withdrawal. If cash fails to dispense, the bank must rollback the deduction from your balance. Either both happen, or neither does.</p>
+        <p><strong>Plain Explanation:</strong> In <code>AutoDispatcher.persistDispatchTransaction()</code>, we execute:
+          <pre><code>conn.setAutoCommit(false); // Begin transaction
+try {
+    ambulanceDao.updateStatus(conn, ...);
+    hospitalDao.updateAvailableBeds(conn, ...);
+    emergencyDao.updateStatus(conn, ...);
+    conn.commit();   // Commit all 3 together
+} catch (SQLException ex) {
+    conn.rollback(); // Rollback if any fails!
+}</code></pre>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="section-3">
+      <h2>3. Deep Code Walkthroughs</h2>
+      <div class="card">
+        <h4>Major Classes Summary</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Class Name</th>
+              <th>One-Sentence Responsibility</th>
+              <th>Key Methods</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>RoadGraph.java</code></td>
+              <td>Stores road topology as an Adjacency List graph with closures and delays.</td>
+              <td><code>addBidirectionalRoad()</code>, <code>getActiveRoads()</code>, <code>setRoadClosed()</code></td>
+            </tr>
+            <tr>
+              <td><code>RoutePlanner.java</code></td>
+              <td>Computes optimal paths using Dijkstra's algorithm and records step traces.</td>
+              <td><code>planRoute()</code>, <code>traceRoute()</code>, <code>calculateSecondBestRoute()</code></td>
+            </tr>
+            <tr>
+              <td><code>DispatchManager.java</code></td>
+              <td>Coordinates triage via <code>PriorityQueue</code> and executes manual dispatches.</td>
+              <td><code>addEmergencyRequest()</code>, <code>dispatchNextEmergency()</code>, <code>completeTrip()</code></td>
+            </tr>
+            <tr>
+              <td><code>AmbulanceManager.java</code></td>
+              <td>Tracks the 5 fleet units and finds the nearest available vehicle.</td>
+              <td><code>findFastestAmbulance()</code>, <code>completeTrip()</code>, <code>resetFleet()</code></td>
+            </tr>
+            <tr>
+              <td><code>HospitalManager.java</code></td>
+              <td>Maintains hospital registries, capability filtering, and bed reservations.</td>
+              <td><code>evaluateAndSelectHospital()</code>, <code>findNearestHospitalWithBeds()</code></td>
+            </tr>
+            <tr>
+              <td><code>AutoDispatcher.java</code></td>
+              <td>Autonomous daemon that allocates ambulances, manages preemption, and runs simulations.</td>
+              <td><code>runDispatchCycle()</code>, <code>startTripSimulation()</code>, <code>findPreemptableAmbulance()</code></td>
+            </tr>
+            <tr>
+              <td><code>WebServer.java</code></td>
+              <td>Embedded HTTP server hosting 18 REST endpoints and serving static web files.</td>
+              <td><code>IntakeHandler</code>, <code>QueueHandler</code>, <code>DijkstraTraceHandler</code>, <code>StaticFileHandler</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="section-4">
+      <h2>4. Visual Architecture & Flowcharts</h2>
+      <h3>Nalam Nagar 12-Zone Map & Highlighted Example Route</h3>
+      <div class="mermaid">
+      graph LR
+          L11((L11 Riverside)) ---|3.0 km / 7.0m| L7((L7 Greenfield))
+          L11 ---|3.8 km / 9.0m| L1((L1 Central Hosp))
+          L7 ---|4.0 km / 8.0m| L12((L12 North Gate))
+          L7 ---|4.5 km / 11.0m| L6((L6 Bus Terminal))
+          L12 ---|3.2 km / 6.5m| L5((L5 College Rd))
+          
+          L1 ===|2.5 km / 6.0m| L6
+          L1 ---|2.0 km / 5.0m| L9((L9 Old City))
+          L1 ---|5.0 km / 12.0m| L3((L3 Colony A))
+          
+          L6 ===|3.0 km / 8.0m| L2((L2 Market Circle))
+          L9 ---|4.0 km / 10.0m| L4((L4 Industrial))
+          
+          L2 ---|3.5 km / 7.0m| L3
+          L3 ---|4.0 km / 9.0m| L5
+          
+          L2 ===|6.5 km / 15.0m| L8((L8 Tech Park))
+          L4 ---|5.5 km / 14.0m| L2
+          L4 ---|4.2 km / 9.5m| L10((L10 Highway))
+          L10 ---|5.0 km / 11.0m| L8
+
+          classDef hl fill:#dbeafe,stroke:#2563eb,stroke-width:3px;
+          class L1,L6,L2,L8 hl;
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="section-5">
+      <h2>5. Design Decisions & Trade-Offs</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h4>PriorityQueue vs. ArrayList Sort</h4>
+          <p><strong>Chosen:</strong> Min-Heap <code>PriorityQueue</code>.</p>
+          <p><strong>Reason:</strong> $O(\log N)$ enqueue vs $O(N \log N)$ full list sorting on every arrival.</p>
+        </div>
+        <div class="card">
+          <h4>Dijkstra vs. A* Search</h4>
+          <p><strong>Chosen:</strong> Dijkstra's Algorithm.</p>
+          <p><strong>Reason:</strong> Straight-line Euclidean distance heuristic can overestimate winding road times with dynamic closures, violating A* admissibility. Dijkstra runs in < 0.1 ms.</p>
+        </div>
+        <div class="card">
+          <h4>Adjacency List vs. Matrix</h4>
+          <p><strong>Chosen:</strong> <code>Map&lt;Location, List&lt;Road&gt;&gt;</code>.</p>
+          <p><strong>Reason:</strong> Sparse graph (12 nodes, 16 roads). Avoids wasting memory on zero-cells.</p>
+        </div>
+        <div class="card">
+          <h4>In-Memory Graph + SQLite</h4>
+          <p><strong>Chosen:</strong> In-memory routing, SQLite persistence.</p>
+          <p><strong>Reason:</strong> Recursive SQL graph queries are slow. In-memory Dijkstra gives nanosecond responses, while SQLite ensures ACID durability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="section-6">
+      <h2>6. How to Run and Test the System</h2>
+      <pre><code># 1. Compile backend and drivers
+javac -cp "lib/*" -d bin -sourcepath src src/WebServer.java src/Main.java src/DbTest.java
+
+# 2. Test database tables and driver connectivity
+java -cp "bin;lib/*" DbTest
+
+# 3. Start web server (or run run.bat)
+java -cp "bin;lib/*" WebServer</code></pre>
+      <p>Open your browser at: <strong><code>http://localhost:8080/</code></strong>.</p>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section id="section-7">
+      <h2>7. Viva & Presentation Prep</h2>
+      <p>Click on any question to reveal the comprehensive model answer:</p>
+
+      <h3>Group 1: Basic & Foundational Questions</h3>
+      <details>
+        <summary>Q1: What is the main objective of your project?</summary>
+        <div class="details-body">
+          It is an automated emergency ambulance dispatch and route optimization system for Nalam Nagar that eliminates manual triage delays, finds the fastest travel routes using Dijkstra's algorithm, matches patients to hospitals with specialized beds, and automatically coordinates fleet movements.
+        </div>
+      </details>
+      <details>
+        <summary>Q2: Why do you optimize by travel time instead of geographic distance?</summary>
+        <div class="details-body">
+          Geographic distance does not account for traffic bottlenecks, road closures, or speed limits. A road that is 2 km long might take 15 minutes due to heavy traffic, while a 4 km bypass might take only 6 minutes. In medical emergencies, saving minutes saves lives.
+        </div>
+      </details>
+      <details>
+        <summary>Q3: How many town zones, ambulances, and hospitals are in the system?</summary>
+        <div class="details-body">
+          There are 12 simulated zones (L1 to L12), 5 strategically stationed emergency ambulances (AMB-1 to AMB-5), and 5 specialized hospitals (H1 to H5).
+        </div>
+      </details>
+      <details>
+        <summary>Q4: What data structure did you use to store the road network?</summary>
+        <div class="details-body">
+          An Adjacency List graph (<code>Map&lt;Location, List&lt;Road&gt;&gt;</code> in <code>RoadGraph.java</code>). Each vertex maps to a list of outgoing directed Road objects.
+        </div>
+      </details>
+      <details>
+        <summary>Q5: What are the edge weights in your graph?</summary>
+        <div class="details-body">
+          The primary edge weight used by Dijkstra is travelTime in minutes. Each edge also stores physical distance in kilometers and an isClosed boolean flag.
+        </div>
+      </details>
+      <details>
+        <summary>Q6: How does the system handle road closures?</summary>
+        <div class="details-body">
+          In <code>RoadGraph.java</code>, roads have a boolean flag <code>isClosed</code>. The method <code>getActiveRoads()</code> filters out any edge where <code>isClosed == true</code>. Dijkstra only evaluates active roads, automatically skipping blocked paths.
+        </div>
+      </details>
+      <details>
+        <summary>Q7: What algorithm is used for route planning, and what is its time complexity?</summary>
+        <div class="details-body">
+          Dijkstra's Shortest Path Algorithm using a binary min-heap (<code>PriorityQueue</code>). Its time complexity is $O((V + E) \log V)$, where $V$ is vertices (zones) and $E$ is edges (roads).
+        </div>
+      </details>
+      <details>
+        <summary>Q8: What data structure handles triage in the emergency queue?</summary>
+        <div class="details-body">
+          Java's <code>java.util.PriorityQueue&lt;EmergencyRequest&gt;</code>, which is implemented internally as a binary min-heap.
+        </div>
+      </details>
+      <details>
+        <summary>Q9: How are emergency requests prioritized in the queue?</summary>
+        <div class="details-body">
+          By implementing <code>Comparable&lt;EmergencyRequest&gt;</code>. The primary sorting key is the <code>Severity</code> enum ordinal (CRITICAL = 0, SERIOUS = 1, MINOR = 2). Ties are broken using FIFO arrival timestamp (<code>Long.compare(this.timestamp, other.timestamp)</code>).
+        </div>
+      </details>
+      <details>
+        <summary>Q10: What are the three severity levels in your system?</summary>
+        <div class="details-body">
+          <code>CRITICAL</code> (immediate life-threat, e.g., cardiac arrest, extensive burns), <code>SERIOUS</code> (urgent medical intervention, e.g., respiratory distress, pediatric crises), and <code>MINOR</code> (non-life-threatening illness or fractures).
+        </div>
+      </details>
+
+      <h3>Group 2: Intermediate Technical Questions</h3>
+      <details>
+        <summary>Q16: Explain how Dijkstra's algorithm reconstructs the final path in your code.</summary>
+        <div class="details-body">
+          During edge relaxation, whenever a shorter time to neighbor $v$ via $u$ is found, we store $u$ in <code>previous.put(v, u)</code>. Once the destination is reached, we backtrack from destination to source following the previous map, store the nodes in a list, and reverse it (<code>Collections.reverse(path)</code>).
+        </div>
+      </details>
+      <details>
+        <summary>Q17: Why does your Dijkstra implementation check `if (timeU &gt; minTime.get(u)) continue;`?</summary>
+        <div class="details-body">
+          Because Java's <code>PriorityQueue</code> does not support an $O(\log V)$ <code>decreaseKey</code> operation. When a shorter path is found, we re-insert the node with the smaller time. When the older, larger duplicate is polled, this check recognizes it as stale and skips it.
+        </div>
+      </details>
+      <details>
+        <summary>Q18: What is Look-Ahead Total Mission Time?</summary>
+        <div class="details-body">
+          It is the combined two-leg duration: the time for the fastest ambulance to reach the patient (Leg 1) plus the time to transport the patient to the chosen hospital (Leg 2).
+        </div>
+      </details>
+      <details>
+        <summary>Q22: How does the system ensure thread safety between HTTP handlers and AutoDispatcher?</summary>
+        <div class="details-body">
+          Both <code>WebServer.java</code> HTTP handlers and <code>AutoDispatcher.java</code> synchronize on a shared monitor object: <code>dispatchLock</code>. Any state-altering method runs inside <code>synchronized (dispatchLock) { ... }</code>, preventing race conditions.
+        </div>
+      </details>
+      <details>
+        <summary>Q23: What is preemption and how does AutoDispatcher implement it?</summary>
+        <div class="details-body">
+          Preemption reassigns a resource from a low-priority task to an incoming high-priority task. If a CRITICAL emergency arrives and all ambulances are busy, <code>findPreemptableAmbulance()</code> re-routes an ambulance currently en route to a MINOR call, returning the minor call to the queue.
+        </div>
+      </details>
+      <details>
+        <summary>Q26: Explain the database transaction in `AutoDispatcher.persistDispatchTransaction()`.</summary>
+        <div class="details-body">
+          It sets <code>conn.setAutoCommit(false)</code>, updates the ambulance to busy, decrements hospital beds, and sets the emergency to DISPATCHED. If all three succeed, <code>conn.commit()</code> is called. If an exception occurs, <code>conn.rollback()</code> reverts all three.
+        </div>
+      </details>
+
+      <h3>Group 3: Tricky & Design Choice Questions</h3>
+      <details>
+        <summary>Q31: Why didn't you use A* search instead of Dijkstra?</summary>
+        <div class="details-body">
+          A* requires an admissible heuristic like straight-line Euclidean distance. In urban routing with dynamic road closures and traffic delays, Euclidean distance can overestimate true travel times, making A* inadmissible. Given our town scale of 12 zones, Dijkstra runs in under 0.1 ms, making A* heuristics an unnecessary complication.
+        </div>
+      </details>
+      <details>
+        <summary>Q32: Why store the road network in memory if you already have a relational database?</summary>
+        <div class="details-body">
+          Relational databases are optimized for tabular CRUD operations, not recursive pointer-hopping graph traversals. Running Dijkstra inside SQL queries is slow and complex. Storing the graph in-memory provides sub-millisecond pathfinding, while the database ensures durable audit logging.
+        </div>
+      </details>
+      <details>
+        <summary>Q35: Can Dijkstra's algorithm handle negative road weights? Does your code handle them?</summary>
+        <div class="details-body">
+          No, Dijkstra fails on negative edge weights because it assumes once a node is settled, its shortest distance cannot decrease. However, road travel times are physical durations which are always strictly positive ($t &gt; 0$). In <code>RoadGraph.java</code>, <code>updateTravelTime()</code> explicitly validates <code>if (newTravelTime &lt;= 0) return false;</code>.
+        </div>
+      </details>
+      <details>
+        <summary>Q37: What prevents two ambulances from being assigned to the same patient?</summary>
+        <div class="details-body">
+          In <code>AutoDispatcher.runDispatchCycle()</code>, requests are immediately removed from the queue with <code>dispatchManager.pollNextRequest()</code>, and the selected ambulance status is set to EN_ROUTE_PATIENT inside a <code>synchronized (dispatchLock)</code> block.
+        </div>
+      </details>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section id="section-8">
+      <h2>8. Self-Test & Exercises</h2>
+
+      <h3>Sample Practice Exercises</h3>
+      <details>
+        <summary>Exercise 1: Hand-Trace PriorityQueue Triage Order</summary>
+        <div class="details-body">
+          <p><strong>Scenario:</strong> 4 calls arrive: REQ-1 (Deepa, Serious, 10:00:00), REQ-2 (Arun, Minor, 10:00:05), REQ-3 (Farooq, Critical, 10:00:10), REQ-4 (Meera, Critical, 10:00:15).</p>
+          <p><strong>Answer:</strong> Order is: <strong>REQ-3, REQ-4, REQ-1, REQ-2</strong>.</p>
+          <p><strong>Explanation:</strong> Critical (0) exits before Serious (1), which exits before Minor (2). Between Farooq and Meera, Farooq called 5 seconds earlier, winning the FIFO tie-break.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Exercise 2: Hand-Trace Two-Leg Dispatch Selection</summary>
+        <div class="details-body">
+          <p><strong>Scenario:</strong> Patient at L3 needs CARDIAC_CARE. AMB-1 (at L1) is 12m away; AMB-5 (at L2) is 7m away. Hospital H5 has Cardiac Care and is 7m away but has <strong>0 beds</strong>. Hospital H2 has Cardiac Care and 3 beds but is 21m away.</p>
+          <p><strong>Answer:</strong> Ambulance = <strong>AMB-5</strong> (7m), Hospital = <strong>H2</strong> (21m, since H5 is full). Total ETA = $7 + 21 = \mathbf{28.0\text{ minutes}}$.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Exercise 3: Road Closure Re-Routing</summary>
+        <div class="details-body">
+          <p><strong>Scenario:</strong> Normal route from L1 to L2 is L1 -> L6 -> L2 (14m). If corridor L1 <-> L6 is closed, what is the new route?</p>
+          <p><strong>Answer:</strong> New route is <strong>L1 -> L3 -> L2</strong> with travel time $12.0 + 7.0 = \mathbf{19.0\text{ minutes}}$.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section id="section-9">
+      <h2>9. Technical Glossary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>One-Sentence Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Adjacency List</strong></td>
+            <td>A graph data structure where each vertex stores a list of its connected neighbor edges.</td>
+          </tr>
+          <tr>
+            <td><strong>Binary Heap</strong></td>
+            <td>A complete binary tree that satisfies the heap property, where the root is always the minimum or maximum element.</td>
+          </tr>
+          <tr>
+            <td><strong>PriorityQueue</strong></td>
+            <td>A queue collection where elements are dequeued based on priority level rather than arrival order.</td>
+          </tr>
+          <tr>
+            <td><strong>Dijkstra's Algorithm</strong></td>
+            <td>A greedy algorithm that finds the guaranteed shortest path from a source node to all other nodes with non-negative edge weights.</td>
+          </tr>
+          <tr>
+            <td><strong>Edge Relaxation</strong></td>
+            <td>The process of testing whether passing through an intermediate vertex improves the known shortest distance to a neighbor.</td>
+          </tr>
+          <tr>
+            <td><strong>Look-Ahead ETA</strong></td>
+            <td>The total projected mission duration combining ambulance-to-patient response time and patient-to-hospital transport time.</td>
+          </tr>
+          <tr>
+            <td><strong>Preemption</strong></td>
+            <td>The interruption of an active low-priority task to reallocate its resource to an urgent high-priority arrival.</td>
+          </tr>
+          <tr>
+            <td><strong>REST</strong></td>
+            <td>An architectural style for networked web services communicating via HTTP verbs like GET and POST.</td>
+          </tr>
+          <tr>
+            <td><strong>JSON</strong></td>
+            <td>A lightweight, text-based data interchange format based on key-value pairs.</td>
+          </tr>
+          <tr>
+            <td><strong>Daemon Thread</strong></td>
+            <td>A background Java thread that does not prevent the JVM from exiting when all user threads finish.</td>
+          </tr>
+          <tr>
+            <td><strong>Race Condition</strong></td>
+            <td>A concurrency flaw where program correctness depends on the unpredictable execution order of multiple threads.</td>
+          </tr>
+          <tr>
+            <td><strong>PreparedStatement</strong></td>
+            <td>A pre-compiled SQL statement used to execute parameterized queries safely, preventing SQL injection.</td>
+          </tr>
+          <tr>
+            <td><strong>ACID Transaction</strong></td>
+            <td>A database transaction satisfying Atomicity, Consistency, Isolation, and Durability guarantees.</td>
+          </tr>
+          <tr>
+            <td><strong>Polling</strong></td>
+            <td>A technique where a client regularly queries a server at fixed time intervals to fetch state updates.</td>
+          </tr>
+          <tr>
+            <td><strong>Triage</strong></td>
+            <td>The medical protocol of sorting patients into priority categories based on clinical urgency.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

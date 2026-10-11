@@ -1,6 +1,7 @@
 package service;
 
 import algorithm.RoutePlanner;
+import graph.RoadGraph;
 import model.Ambulance;
 import model.AmbulanceStatus;
 import model.Location;
@@ -110,14 +111,43 @@ public class AmbulanceManager {
      */
     public void completeTrip(Ambulance ambulance) {
         if (ambulance == null) return;
-        if (ambulance.getTargetLocation() != null) {
+        if (ambulance.getAssignedHospital() != null) {
+            ambulance.setCurrentLocation(ambulance.getAssignedHospital().getLocation());
+        } else if (ambulance.getTargetLocation() != null) {
             ambulance.setCurrentLocation(ambulance.getTargetLocation());
-            ambulance.setTargetLocation(null);
         }
+        ambulance.setTargetLocation(null);
         ambulance.setStatus(AmbulanceStatus.AVAILABLE);
         ambulance.setAssignedRequest(null);
         ambulance.setAssignedHospital(null);
+        ambulance.setEtaMinutes(0.0);
         ambulance.incrementTrips();
+    }
+
+    /**
+     * Resets all ambulances to initial station locations, zero trips, and available status.
+     */
+    public void resetFleet(RoadGraph graph) {
+        for (Ambulance amb : ambulances) {
+            amb.setStatus(AmbulanceStatus.AVAILABLE);
+            amb.setTargetLocation(null);
+            amb.setAssignedHospital(null);
+            amb.setAssignedRequest(null);
+            amb.setEtaMinutes(0.0);
+            amb.resetTrips();
+
+            Location baseLoc = switch (amb.getAmbulanceId()) {
+                case "AMB-1" -> graph.getLocationById("L1");
+                case "AMB-2" -> graph.getLocationById("L6");
+                case "AMB-3" -> graph.getLocationById("L4");
+                case "AMB-4" -> graph.getLocationById("L12");
+                case "AMB-5" -> graph.getLocationById("L2");
+                default -> amb.getCurrentLocation();
+            };
+            if (baseLoc != null) {
+                amb.setCurrentLocation(baseLoc);
+            }
+        }
     }
 
     public void displayFleet() {

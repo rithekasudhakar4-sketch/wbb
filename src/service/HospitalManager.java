@@ -102,23 +102,23 @@ public class HospitalManager {
 
         addHospital(new Hospital("H1", "Nalam General Hospital",
                 h1Loc != null ? h1Loc : new Location("L1", "Central Hospital Junction", 12.9716, 77.5946),
-                Set.of(Capability.ICU, Capability.GENERAL_WARD, Capability.TRAUMA_CENTRE), 25, 12));
+                Set.of(Capability.ICU, Capability.GENERAL_WARD, Capability.TRAUMA_CENTRE), 25, 25));
 
         addHospital(new Hospital("H2", "Apex Heart & Trauma Institute",
                 h2Loc != null ? h2Loc : new Location("L2", "Industrial Area", 12.9550, 77.5800),
-                Set.of(Capability.CARDIAC_CARE, Capability.TRAUMA_CENTRE, Capability.ICU), 15, 4));
+                Set.of(Capability.CARDIAC_CARE, Capability.TRAUMA_CENTRE, Capability.ICU), 15, 15));
 
         addHospital(new Hospital("H3", "Grace Children & Multi-Care",
                 h3Loc != null ? h3Loc : new Location("L3", "Residential Colony A", 12.9800, 77.6100),
-                Set.of(Capability.PEDIATRIC_ICU, Capability.GENERAL_WARD, Capability.ICU), 12, 3));
+                Set.of(Capability.PEDIATRIC_ICU, Capability.GENERAL_WARD, Capability.ICU), 12, 12));
 
         addHospital(new Hospital("H4", "Sanjeevani Burn & Critical Care",
                 h4Loc != null ? h4Loc : new Location("L4", "College Road", 12.9900, 77.6300),
-                Set.of(Capability.BURN_UNIT, Capability.ICU, Capability.TRAUMA_CENTRE), 10, 2));
+                Set.of(Capability.BURN_UNIT, Capability.ICU, Capability.TRAUMA_CENTRE), 10, 10));
 
         addHospital(new Hospital("H5", "Nalam Neuro & Stroke Care",
                 h5Loc != null ? h5Loc : new Location("L5", "Market Circle", 12.9650, 77.6050),
-                Set.of(Capability.STROKE_UNIT, Capability.ICU, Capability.CARDIAC_CARE), 18, 6));
+                Set.of(Capability.STROKE_UNIT, Capability.ICU, Capability.CARDIAC_CARE), 18, 18));
     }
 
     /**
@@ -185,6 +185,51 @@ public class HospitalManager {
         return new HospitalSelectionResult(bestHospital, bestRoute);
     }
 
+    /**
+     * Fallback hospital evaluation: selects the fastest reachable hospital with available beds,
+     * regardless of medical specialty matching.
+     */
+    public HospitalSelectionResult findNearestHospitalWithBeds(Location patientLoc, RoutePlanner planner) {
+        Hospital bestHospital = null;
+        RouteResult bestRoute = null;
+        double minTravelTime = Double.MAX_VALUE;
+
+        for (Hospital h : hospitals) {
+            if (!h.hasAvailableBed()) continue;
+
+            RouteResult route = planner.planRoute(patientLoc, h.getLocation());
+            if (!route.isReachable()) continue;
+
+            if (route.getTotalTime() < minTravelTime) {
+                minTravelTime = route.getTotalTime();
+                bestHospital = h;
+                bestRoute = route;
+            }
+        }
+        return new HospitalSelectionResult(bestHospital, bestRoute);
+    }
+
+    /**
+     * Emergency Surge Protocol: finds the nearest reachable hospital regardless of beds or specialties.
+     */
+    public HospitalSelectionResult findNearestHospital(Location patientLoc, RoutePlanner planner) {
+        Hospital bestHospital = null;
+        RouteResult bestRoute = null;
+        double minTravelTime = Double.MAX_VALUE;
+
+        for (Hospital h : hospitals) {
+            RouteResult route = planner.planRoute(patientLoc, h.getLocation());
+            if (!route.isReachable()) continue;
+
+            if (route.getTotalTime() < minTravelTime) {
+                minTravelTime = route.getTotalTime();
+                bestHospital = h;
+                bestRoute = route;
+            }
+        }
+        return new HospitalSelectionResult(bestHospital, bestRoute);
+    }
+
     public void displayHospitals() {
         System.out.println("\n=========================================================================================");
         System.out.println("                            NALAM NAGAR HOSPITAL REGISTRY");
@@ -203,6 +248,15 @@ public class HospitalManager {
                     h.getAvailableBeds(), h.getTotalBeds(), caps.toString());
         }
         System.out.println("=========================================================================================\n");
+    }
+
+    /**
+     * Resets all managed hospitals to 100% bed availability.
+     */
+    public void resetAllBeds() {
+        for (Hospital h : hospitals) {
+            h.setAvailableBeds(h.getTotalBeds());
+        }
     }
 
     public static class HospitalSelectionResult {

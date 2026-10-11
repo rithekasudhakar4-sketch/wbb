@@ -12,6 +12,7 @@ public class Ambulance {
     private AmbulanceStatus status;
     private Hospital assignedHospital;
     private EmergencyRequest assignedRequest;
+    private double etaMinutes;
     private int totalTripsCompleted;
 
     public Ambulance(String ambulanceId, Location currentLocation, AmbulanceStatus status) {
@@ -21,6 +22,7 @@ public class Ambulance {
         this.targetLocation = null;
         this.assignedHospital = null;
         this.assignedRequest = null;
+        this.etaMinutes = 0.0;
         this.totalTripsCompleted = 0;
     }
 
@@ -84,12 +86,24 @@ public class Ambulance {
         this.assignedRequest = assignedRequest;
     }
 
+    public double getEtaMinutes() {
+        return etaMinutes;
+    }
+
+    public void setEtaMinutes(double etaMinutes) {
+        this.etaMinutes = etaMinutes;
+    }
+
     public int getTotalTripsCompleted() {
         return totalTripsCompleted;
     }
 
     public void incrementTrips() {
         this.totalTripsCompleted++;
+    }
+
+    public void resetTrips() {
+        this.totalTripsCompleted = 0;
     }
 
     @Override
