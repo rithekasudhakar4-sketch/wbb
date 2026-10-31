@@ -518,10 +518,11 @@
     // HTTP Handler Interceptor
     async handleRequest(path, options = {}) {
       const method = (options.method || 'GET').toUpperCase();
-      const url = new URL(path, window.location.origin);
+      const baseOrigin = (window.location.origin && window.location.origin.includes('http')) ? window.location.origin : 'http://localhost:8080';
+      const url = new URL(path, baseOrigin);
       const pathname = url.pathname.replace(/^\/api/, '');
 
-      // Simulate realistic network delay (50ms)
+      // Simulate realistic network delay (40ms)
       await new Promise(r => setTimeout(r, 40));
 
       const sendJson = (data, status = 200) => {
@@ -633,16 +634,17 @@
           params.forEach((v, k) => { body[k] = v; });
         }
 
-        const zone = this.getZone(body.location || body.locationId || 'L1');
+        const locKey = body.emergencyLocation || body.location || body.locationId || 'L1';
+        const zone = this.getZone(locKey) || this.getZone('L1');
         const reqId = 'REQ-' + (this.requestCounter++);
         const newReq = {
           requestId: reqId,
           patientName: body.patientName || 'Emergency Patient',
           locationId: zone.id,
           locationName: zone.name,
-          severity: body.severity || 'CRITICAL',
+          severity: (body.severityTier || body.severity || 'CRITICAL').toUpperCase(),
           condition: body.condition || 'GENERAL_ILLNESS',
-          conditionDisplay: body.condition || 'General Emergency',
+          conditionDisplay: body.conditionDisplay || body.condition || 'General Emergency',
           requiredCapability: body.requiredCapability || 'GENERAL_WARD',
           timestamp: Date.now(),
           formattedTime: 'Just now',
