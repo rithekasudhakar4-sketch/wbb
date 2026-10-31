@@ -87,7 +87,14 @@ function updateServerOfflineBanner(isOffline) {
         z-index: 100000;
         box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       `;
-      banner.innerHTML = `⚠️ Java Backend Disconnected &bull; Please make sure 'run.bat' is running on port 8080. Retrying live connection...`;
+      const isGitHubPages = window.location.hostname.includes('github.io');
+      if (isGitHubPages) {
+        banner.style.background = '#0f172a';
+        banner.style.borderBottom = '1px solid #334155';
+        banner.innerHTML = `🌐 <strong>GitHub Pages Preview Mode</strong> &bull; Static Web UI. To connect the live Java dispatch engine &amp; SQLite database, launch <code>run.bat</code> locally.`;
+      } else {
+        banner.innerHTML = `⚠️ Java Backend Disconnected &bull; Please make sure 'run.bat' is running on port 8080. Retrying live connection...`;
+      }
       document.body.appendChild(banner);
     }
   } else {
