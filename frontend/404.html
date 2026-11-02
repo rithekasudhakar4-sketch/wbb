@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Incident Route Not Found | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function() {
+      try {
+        var path = window.location.pathname;
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+
+        var pages = [
+          'index', 'intake', 'queue', 'fleet', 'hospitals',
+          'traffic', 'dijkstra', 'history', 'analytics', 'dispatch', 'settings'
+        ];
+
+        // Determine base prefix (e.g. /wbb/ for GitHub Pages project sites or / for root sites)
+        var repoBase = '/';
+        var match = path.match(/^(\/[^\/]+\/)/);
+        if (match && window.location.hostname.includes('github.io')) {
+          repoBase = match[1];
+        }
+
+        var subpath = path.startsWith(repoBase) ? path.slice(repoBase.length) : path.replace(/^\//, '');
+
+        // If path references frontend/ subfolder
+        if (subpath.startsWith('frontend/')) {
+          subpath = subpath.slice('frontend/'.length);
+        }
+
+        subpath = subpath.replace(/\/$/, '');
+
+        // If root or empty
+        if (!subpath || subpath === 'frontend') {
+          window.location.replace(repoBase + 'index.html' + search + hash);
+          return;
+        }
+
+        // Match against known pages
+        var baseSlug = subpath.replace(/\.html$/, '');
+        if (pages.indexOf(baseSlug) !== -1) {
+          window.location.replace(repoBase + baseSlug + '.html' + search + hash);
+          return;
+        }
+      } catch (e) {
+        console.warn('404 auto-redirect check failed:', e);
+      }
+    })();
+  </script>
+</head>
+<body style="background: #090d16; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; box-sizing: border-box;">
+
+  <div style="max-width: 580px; width: 100%; background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 36px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.45); text-align: center;">
+    
+    <div style="width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); border: 2px solid rgba(239, 68, 68, 0.4); display: flex; align-items: center; justify-content: center; font-size: 28px;">
+      🚑
+    </div>
+
+    <div style="display: inline-block; padding: 4px 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 999px; color: #f87171; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+      404 Incident Route Not Found
+    </div>
+
+    <h1 style="font-size: 24px; font-weight: 800; color: #f8fafc; margin: 0 0 10px 0; letter-spacing: -0.02em;">
+      Dispatch Route Missing
+    </h1>
+
+    <p style="color: #94a3b8; font-size: 14px; line-height: 1.5; margin: 0 0 20px 0;">
+      The page or command center section you requested could not be located in Nalam Nagar's emergency system.
+    </p>
+
+    <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; margin-bottom: 24px; font-family: monospace; font-size: 12.5px; color: #38bdf8; word-break: break-all; text-align: left;">
+      <span style="color: #64748b;">Requested: </span><span id="route-display">...</span>
+    </div>
+
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+      <a href="index.html" class="btn-action btn-action-primary" style="background: #2563eb; color: #ffffff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px;">
+        <span>🏠 Return to Dashboard</span>
+      </a>
+      <a href="queue.html" style="background: #1e293b; color: #e2e8f0; border: 1px solid #475569; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px;">
+        📋 Active Emergencies
+      </a>
+      <a href="dijkstra.html" style="background: #1e293b; color: #e2e8f0; border: 1px solid #475569; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13.5px;">
+        🗺️ Dijkstra Visualizer
+      </a>
+    </div>
+
+    <div style="border-top: 1px solid #1e293b; padding-top: 16px; font-size: 12px; color: #64748b;">
+      Automatic redirection to Dashboard in <strong id="countdown-timer" style="color: #38bdf8;">6</strong>s...
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('route-display').textContent = window.location.pathname + window.location.search;
+    var seconds = 6;
+    var timerEl = document.getElementById('countdown-timer');
+    var interval = setInterval(function() {
+      seconds--;
+      if (timerEl) timerEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.replace('index.html');
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
