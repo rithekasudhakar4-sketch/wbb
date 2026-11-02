@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NALAM NAGAR EMERGENCY OPERATIONS - IN-BROWSER SIMULATION ENGINE
  * Provides 100% standalone, serverless client-side simulation for GitHub Pages.
  * Replicates the complete Java backend: Dijkstra route planning, PriorityQueue emergency
@@ -805,17 +805,23 @@
 
     // Only intercept /api/ requests
     if (urlStr.includes('/api/')) {
-      const isGitHubPages = window.location.hostname.includes('github.io');
+      const isLocalHost = window.location.hostname === 'localhost' || 
+                          window.location.hostname === '127.0.0.1' || 
+                          window.location.origin.includes(':8080');
 
-      // If running on GitHub Pages, directly route to client-side engine (bypassing mixed content & failed local network calls)
-      if (isGitHubPages) {
+      // If running on a remote hosted environment (GitHub Pages, Netlify, custom domain, etc.),
+      // directly route to client-side engine (bypassing mixed content & failed local network calls)
+      if (!isLocalHost) {
         return window.SimulationEngineInstance.handleRequest(urlStr, init);
       }
 
-      // If on localhost / custom domain, try local Java server first. If it fails, fallback gracefully to simulation!
+      // If on localhost, try local Java server first. If it fails or returns 404, fallback gracefully to simulation!
       try {
         const res = await nativeFetch(resource, init);
-        return res;
+        if (res && res.status !== 404 && res.status !== 502 && res.status !== 503) {
+          return res;
+        }
+        return window.SimulationEngineInstance.handleRequest(urlStr, init);
       } catch (networkErr) {
         // Fallback to SimulationEngine
         return window.SimulationEngineInstance.handleRequest(urlStr, init);
@@ -958,11 +964,13 @@ function updateServerOfflineBanner(isOffline) {
         z-index: 100000;
         box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       `;
-      const isGitHubPages = window.location.hostname.includes('github.io');
-      if (isGitHubPages) {
+      const isLocalHost = window.location.hostname === 'localhost' || 
+                          window.location.hostname === '127.0.0.1' || 
+                          window.location.origin.includes(':8080');
+      if (!isLocalHost) {
         banner.style.background = '#0f172a';
         banner.style.borderBottom = '1px solid #334155';
-        banner.innerHTML = `🌐 <strong>GitHub Pages Preview Mode</strong> &bull; Static Web UI. To connect the live Java dispatch engine &amp; SQLite database, launch <code>run.bat</code> locally.`;
+        banner.innerHTML = `🌐 <strong>Interactive Hosted Simulation</strong> &bull; Client-side Dijkstra routing &amp; dispatch active. Connect <code>run.bat</code> locally for Java backend &amp; SQLite.`;
       } else {
         banner.innerHTML = `⚠️ Java Backend Disconnected &bull; Please make sure 'run.bat' is running on port 8080. Retrying live connection...`;
       }

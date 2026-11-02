@@ -101,43 +101,77 @@
               <span>Trip History</span>
             </a>
           </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
-    <!-- Live System Engine Badge -->
-    <div class="sidebar-status-pill">
-      <div class="system-pulse-dot"></div>
-      <div style="flex:1;">
-        <div style="font-weight:700; color:#ffffff;">Dijkstra Engine Active</div>
-        <div style="font-size:11px; color:var(--sidebar-text-muted);" id="sidebar-clock">Synchronized</div>
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
       </div>
     </div>
   </aside>
 
-  <!-- Main Content Area -->
-  <main class="main-content">
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
 
-    <!-- Top Operational Bar -->
-    <header class="topbar">
-      <div class="topbar-left">
-        <h1 class="page-title">Dijkstra Shortest Path Visualizer</h1>
-        <p class="page-subtitle">Interactive algorithmic audit: See how the dispatcher calculates the fastest ambulance route step by step</p>
+    <!-- Top Navigation Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Dijkstra Visualizer</span>
+        </nav>
       </div>
 
-      <div class="topbar-right">
-        <div class="status-indicator">
-          <span class="status-dot"></span>
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>Dijkstra Shortest Path Engine Active</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="timestamp-clock">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span>Ambulances: <strong id="top-ready-ambs">5 Free</strong></span>
         </div>
-        <div class="status-indicator">
-          <span class="status-dot" style="background:#eab308;"></span>
-          <span>Pending: <strong id="top-pending-reqs">0</strong></span>
-        </div>
+        <span id="top-pending-reqs" style="display:none;">0</span>
+        <a href="tel:108" class="btn-action" style="background-color: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); padding: 6px 14px; font-size: 12px; font-weight: 700; text-decoration: none;">
+          📞 Helpline: 108
+        </a>
       </div>
     </header>
 
-    <div class="content-body">
+    <!-- Scrollable Workspace -->
+    <main class="viewport-content">
+
+      <!-- View Title & Actions -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Dijkstra Shortest Path Visualizer</h1>
+          <p>Interactive algorithmic audit: See how the dispatcher calculates the fastest ambulance route step by step across Nalam Nagar.</p>
+        </div>
+        <div class="control-bar-actions">
+          <a href="index.html" class="btn-action btn-action-secondary">
+            <span>&larr; Back to Dashboard</span>
+          </a>
+          <a href="intake.html" class="btn-action btn-action-primary">
+            <span>+ Request Ambulance</span>
+          </a>
+        </div>
+      </div>
 
       <!-- Scenario Selector Card -->
       <div class="card" style="margin-bottom: 20px;">
@@ -488,8 +522,8 @@
         </div>
       </section>
 
-    </div>
-  </main>
+    </main>
+  </div>
 </div>
 
 <script src="app.js"></script>

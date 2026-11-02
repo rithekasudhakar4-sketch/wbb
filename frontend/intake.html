@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request an Ambulance | Nalam Nagar Emergency Service</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical">14</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Request an Ambulance</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>Ambulances are standing by for immediate dispatch</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="tel:108" class="btn-action" style="background-color: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); padding: 6px 14px; font-size: 12px; font-weight: 700; text-decoration: none;">
+          📞 Helpline: 108
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <main class="viewport-content">
+
+      <!-- View Title -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Request an Ambulance</h1>
+          <p>Fill out the emergency details below. The system will find the closest ambulance and match the right hospital automatically.</p>
+        </div>
+        <div class="control-bar-actions">
+          <a href="queue.html" class="btn-action btn-action-secondary">
+            <span>View Active Dispatches (14)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2-Column Friendly Form Layout -->
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start;">
+
+        <!-- Main Form Panel -->
+        <section class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              <h2>Emergency Information Form</h2>
+            </div>
+            <span class="panel-tag critical">Fast Response</span>
+          </div>
+
+          <div style="padding: 24px;">
+            <form id="intake-form" onsubmit="return false;">
+
+              <!-- Step 1: Location -->
+              <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                  <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent-blue-bg); color: var(--accent-blue); font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center;">1</span>
+                  <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">Where is the patient located?</h3>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label for="emergencyLocation" class="form-label">Town Area / Zone <span style="color: var(--accent-red);">*</span></label>
+                    <select id="emergencyLocation" name="emergencyLocation" class="form-select" required>
+                      <option value="" disabled selected>-- Choose Area --</option>
+                      <option value="L1">L1 &bull; Central Hospital Junction</option>
+                      <option value="L2">L2 &bull; Market Circle (East)</option>
+                      <option value="L3">L3 &bull; Residential Colony A</option>
+                      <option value="L4">L4 &bull; Industrial Area Hub</option>
+                      <option value="L5">L5 &bull; College Road Sector</option>
+                      <option value="L6">L6 &bull; Town Bus Terminal</option>
+                      <option value="L7">L7 &bull; Greenfield Suburb</option>
+                      <option value="L8">L8 &bull; Tech Park Zone</option>
+                      <option value="L9">L9 &bull; Old City Bazaar</option>
+                      <option value="L10">L10 &bull; Highway Bypass Junction</option>
+                      <option value="L11">L11 &bull; Riverside Gardens</option>
+                      <option value="L12">L12 &bull; North Gate Hub</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="streetAddress" class="form-label">Landmark / Building Address</label>
+                    <input type="text" id="streetAddress" name="streetAddress" class="form-input" placeholder="e.g. Near Bus Stand, Flat 3B, Sunshine Apts">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Medical Condition -->
+              <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                  <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent-blue-bg); color: var(--accent-blue); font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center;">2</span>
+                  <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">What is the emergency condition?</h3>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label for="condition" class="form-label">Medical Emergency Type <span style="color: var(--accent-red);">*</span></label>
+                    <select id="condition" name="condition" class="form-select" required>
+                      <option value="" disabled selected>-- Select What Happened --</option>
+                      <option value="CARDIAC_ARREST">💔 Heart Attack / Severe Chest Pain</option>
+                      <option value="TRAUMA">🚗 Major Accident / Severe Bleeding</option>
+                      <option value="BURN">🔥 Fire Burn / Chemical Injury</option>
+                      <option value="STROKE">🧠 Stroke / Facial Droop / Sudden Weakness</option>
+                      <option value="PEDIATRIC_EMERGENCY">👶 Child / Baby Urgent Illness</option>
+                      <option value="RESPIRATORY_FAILURE">🫁 Breathing Difficulty / Asthma Attack</option>
+                      <option value="FRACTURE">🦴 Broken Bone / Painful Fall</option>
+                      <option value="GENERAL_ILLNESS">🩺 High Fever / Severe Dehydration / Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="requiredCapability" class="form-label">Hospital Department Recommended</label>
+                    <select id="requiredCapability" name="requiredCapability" class="form-select">
+                      <option value="AUTO">Automated Hospital Matching (Recommended)</option>
+                      <option value="CARDIAC_CARE">Heart Care / Cath Lab (Apex Institute H2)</option>
+                      <option value="TRAUMA_CENTRE">Trauma Resuscitation (Nalam General H1)</option>
+                      <option value="BURN_UNIT">Burn ICU (Sanjeevani Hospital H4)</option>
+                      <option value="STROKE_UNIT">Stroke Neurology (Nalam Neuro Care H5)</option>
+                      <option value="PEDIATRIC_ICU">Children's ICU (Grace Hospital H3)</option>
+                      <option value="GENERAL_WARD">General Inpatient Ward</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Urgency Level -->
+              <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                  <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent-blue-bg); color: var(--accent-blue); font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center;">3</span>
+                  <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">How urgent is this? (Triage Severity)</h3>
+                </div>
+
+                <div class="radio-cards-grid">
+                  <label class="radio-card critical">
+                    <input type="radio" name="severityTier" value="CRITICAL" checked>
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                      <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-red);"></span>
+                      <strong style="color: var(--accent-red); font-size: 14px;">🔴 Critical</strong>
+                    </div>
+                    <span style="font-size: 12px; color: var(--text-secondary);">Life-threatening emergency. Patient needs immediate life-support or CPR.</span>
+                  </label>
+
+                  <label class="radio-card serious">
+                    <input type="radio" name="severityTier" value="SERIOUS">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                      <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-amber);"></span>
+                      <strong style="color: var(--accent-amber); font-size: 14px;">🟠 Serious</strong>
+                    </div>
+                    <span style="font-size: 12px; color: var(--text-secondary);">Urgent condition. Needs doctor examination within 15 minutes.</span>
+                  </label>
+
+                  <label class="radio-card">
+                    <input type="radio" name="severityTier" value="MINOR">
+                    <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                      <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue);"></span>
+                      <strong style="color: var(--accent-blue); font-size: 14px;">🟢 Minor</strong>
+                    </div>
+                    <span style="font-size: 12px; color: var(--text-secondary);">Non-emergency. Patient is stable but requires ambulance transfer.</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Step 4: Patient Details -->
+              <div style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+                  <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--accent-blue-bg); color: var(--accent-blue); font-weight: 700; font-size: 12px; display: flex; align-items: center; justify-content: center;">4</span>
+                  <h3 style="font-size: 15px; font-weight: 700; color: var(--text-main);">Patient & Caller Information</h3>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                  <div class="form-group">
+                    <label for="patientName" class="form-label">Patient Full Name <span style="color: var(--accent-red);">*</span></label>
+                    <input type="text" id="patientName" name="patientName" class="form-input" placeholder="e.g. Ramesh Krishnan" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="callerPhone" class="form-label">Contact Phone Number <span style="color: var(--accent-red);">*</span></label>
+                    <input type="tel" id="callerPhone" name="callerPhone" class="form-input" placeholder="e.g. +91 98410 12345" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="dispatcherNotes" class="form-label">Notes for Ambulance Driver (Optional)</label>
+                  <input type="text" id="dispatcherNotes" name="dispatcherNotes" class="form-input" placeholder="e.g. Patient on 2nd floor, stretcher needed, caller waiting at gate">
+                </div>
+              </div>
+
+              <!-- Big Friendly Dispatch Button -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--border-light);">
+                <span style="font-size: 12px; color: var(--text-muted);">
+                  ⏱️ Ambulances in your area usually arrive in <strong>6 to 9 minutes</strong>.
+                </span>
+                <button type="submit" class="btn-action btn-action-primary" style="padding: 12px 28px; font-size: 15px; font-weight: 700;">
+                  🚑 Dispatch Ambulance Now
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </section>
+
+        <!-- Right: Helpful Guidance Panel -->
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+
+          <section class="panel-card" style="margin-bottom: 0;">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                <h2>What happens when you click dispatch?</h2>
+              </div>
+            </div>
+            <div style="padding: 18px; display: flex; flex-direction: column; gap: 14px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+              <div style="display: flex; gap: 12px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</span>
+                <div>
+                  <strong style="color: var(--text-main);">Closest Ambulance Dispatched:</strong>
+                  The system locates the nearest available vehicle and alerts the crew instantly.
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 12px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: #dbeafe; color: #2563eb; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</span>
+                <div>
+                  <strong style="color: var(--text-main);">Smart Route Selection:</strong>
+                  The driver receives the quickest route avoiding road closures and heavy traffic.
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 12px;">
+                <span style="width: 24px; height: 24px; border-radius: 50%; background: #fef3c7; color: #d97706; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</span>
+                <div>
+                  <strong style="color: var(--text-main);">Emergency Bed Reserved:</strong>
+                  A hospital with the right medical specialists is notified so doctors are waiting.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Immediate Call Helpline -->
+          <div style="background-color: var(--accent-red-bg); border: 1px solid var(--accent-red-border); border-radius: var(--r-lg); padding: 18px; text-align: center;">
+            <p style="font-size: 13px; color: var(--accent-red); font-weight: 600; margin-bottom: 6px;">Need to speak with a dispatcher right now?</p>
+            <p style="font-size: 20px; font-weight: 800; color: var(--accent-red); margin-bottom: 8px;">Call 108</p>
+            <p style="font-size: 12px; color: var(--text-secondary);">Toll-free 24/7 emergency response line</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

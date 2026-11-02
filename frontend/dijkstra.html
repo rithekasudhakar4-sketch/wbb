@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dijkstra Shortest Path Visualizer | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical" id="nav-badge-emergencies">0</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral" id="nav-badge-fleet">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Navigation Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Dijkstra Visualizer</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>Dijkstra Shortest Path Engine Active</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="timestamp-clock">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Ambulances: <strong id="top-ready-ambs">5 Free</strong></span>
+        </div>
+        <span id="top-pending-reqs" style="display:none;">0</span>
+        <a href="tel:108" class="btn-action" style="background-color: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); padding: 6px 14px; font-size: 12px; font-weight: 700; text-decoration: none;">
+          📞 Helpline: 108
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Workspace -->
+    <main class="viewport-content">
+
+      <!-- View Title & Actions -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Dijkstra Shortest Path Visualizer</h1>
+          <p>Interactive algorithmic audit: See how the dispatcher calculates the fastest ambulance route step by step across Nalam Nagar.</p>
+        </div>
+        <div class="control-bar-actions">
+          <a href="index.html" class="btn-action btn-action-secondary">
+            <span>&larr; Back to Dashboard</span>
+          </a>
+          <a href="intake.html" class="btn-action btn-action-primary">
+            <span>+ Request Ambulance</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Scenario Selector Card -->
+      <div class="card" style="margin-bottom: 20px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <h2 style="font-size: 16px; font-weight: 700; margin: 0; color: var(--text-main);">Configure Route Scenario</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 2px 0 0 0;">Pick any two zones across Nalam Nagar, or load a live patient emergency from the queue.</p>
+          </div>
+          <button id="btn-run-dijkstra" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; font-weight: 700;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <span>Run Dijkstra Trace</span>
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: end;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="select-source-zone" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Source Zone (Starting Point)</label>
+            <select id="select-source-zone" class="form-control" style="font-size: 13px; font-weight: 600;"></select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="select-dest-zone" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Destination Zone (Target)</label>
+            <select id="select-dest-zone" class="form-control" style="font-size: 13px; font-weight: 600;"></select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="select-real-emergency" style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">⚡ Use a Real Emergency (Live Queue)</label>
+            <select id="select-real-emergency" class="form-control" style="font-size: 13px;">
+              <option value="">-- Choose from active emergencies --</option>
+            </select>
+          </div>
+
+          <div id="emergency-leg-selector" style="display: none; align-items: center; gap: 12px; padding: 8px 12px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--r-md);">
+            <span style="font-size: 12px; font-weight: 700; color: #1e40af;">Leg:</span>
+            <label style="font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              <input type="radio" name="emergency-leg" value="leg1" checked> Amb ➔ Patient
+            </label>
+            <label style="font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+              <input type="radio" name="emergency-leg" value="leg2"> Patient ➔ Hospital
+            </label>
+          </div>
+        </div>
+
+        <!-- Color Legend -->
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-light); font-size: 12px; align-items: center;">
+          <strong style="color: var(--text-secondary);">Map Legend:</strong>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#1e293b; border:2px solid #64748b;"></span> Unvisited</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#78350f; border:2px solid #f59e0b;"></span> In Priority Queue</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#1e3a8a; border:2px solid #38bdf8;"></span> Processing Node</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#064e3b; border:2px solid #10b981;"></span> Finalized / Settled</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:14px; height:4px; background:#22c55e; border-radius:2px;"></span> Shortest Path</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:14px; height:4px; background:#dc2626; border-top:2px dashed #ffffff;"></span> Closed Road</span>
+          <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:14px; height:4px; background:#ea580c; border-radius:2px;"></span> Heavy Traffic</span>
+          <span style="display: flex; align-items: center; gap: 5px;">🏥 Hospital</span>
+          <span style="display: flex; align-items: center; gap: 5px;">🚑 Ambulance Base</span>
+        </div>
+      </div>
+
+      <!-- Main Visualizer Grid (Map + Side Panels) -->
+      <div class="dijkstra-grid">
+
+        <!-- Left Column: Map & Controls -->
+        <div>
+          <div class="map-card-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 14px; font-weight: 700; color: var(--text-main);">Nalam Nagar Live Graph Topology</span>
+              <span id="route-status-indicator" class="badge badge-assigned" style="font-size: 12px;">Ready to Trace</span>
+            </div>
+
+            <!-- Live SVG Map Container -->
+            <div class="dijkstra-svg-wrap">
+              <svg id="dijkstra-svg" class="dijkstra-svg" viewBox="0 0 950 620">
+                <defs>
+                  <!-- Subtle city grid -->
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8"/>
+                  </pattern>
+                  <filter id="glow-green" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#22c55e"/>
+                  </filter>
+                  <filter id="glow-blue" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#38bdf8"/>
+                  </filter>
+                </defs>
+                <rect width="950" height="620" fill="url(#grid)"/>
+
+                <!-- SVG Layers -->
+                <g id="svg-edges-group"></g>
+                <g id="svg-edge-labels-group"></g>
+                <g id="svg-nodes-group"></g>
+                <g id="svg-ambulance-marker" style="display: none;"></g>
+              </svg>
+            </div>
+
+            <!-- Playback Controls Toolbar -->
+            <div class="playback-controls">
+              <button id="btn-play-pause" class="playback-btn primary" title="Play or Pause Animation">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                <span id="play-pause-label">Play</span>
+              </button>
+
+              <button id="btn-prev-step" class="playback-btn" title="Previous Step">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                <span>Prev</span>
+              </button>
+
+              <button id="btn-next-step" class="playback-btn" title="Next Step">
+                <span>Next</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+
+              <button id="btn-reset" class="playback-btn" title="Reset to Beginning">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                </svg>
+                <span>Reset</span>
+              </button>
+
+              <div class="step-counter-badge" id="step-counter-badge">Step 0 / 0</div>
+
+              <div class="speed-control">
+                <span>Speed:</span>
+                <input type="range" id="speed-slider" min="300" max="2500" value="1200" step="100">
+                <span id="speed-display">1.2s</span>
+              </div>
+            </div>
+
+            <!-- Plain-English Step Explanation Card -->
+            <div class="step-explanation-card" id="step-explanation-box">
+              <div class="step-exp-header">
+                <span class="step-exp-title" id="step-exp-title">Awaiting Execution</span>
+                <span class="badge badge-assigned" id="step-action-badge">Ready</span>
+              </div>
+              <p class="step-exp-body" id="step-exp-body">
+                Select a starting zone and destination above, then click <strong>"Run Dijkstra Trace"</strong> to see the step-by-step priority queue choices and distance updates.
+              </p>
+              <div id="step-relax-container" style="display: none;">
+                <span class="step-relax-pill" id="step-relax-pill"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result & "Why This Route" Card -->
+          <div class="why-route-card" id="why-route-card">
+            <h3 style="font-size: 16px; font-weight: 700; margin: 0 0 14px 0; color: var(--text-main);">
+              Route Result & Algorithmic Guarantee
+            </h3>
+
+            <div class="route-summary-banner">
+              <div class="route-stat">
+                <span class="route-stat-val" id="res-optimal-time">—</span>
+                <span class="route-stat-label">Fastest Travel Time</span>
+              </div>
+              <div class="route-stat">
+                <span class="route-stat-val" id="res-optimal-dist" style="color: #67e8f9;">—</span>
+                <span class="route-stat-label">Total Distance</span>
+              </div>
+              <div class="route-stat">
+                <span class="route-stat-val" id="res-alt-saved" style="color: #fde047;">—</span>
+                <span class="route-stat-label">Time Saved vs 2nd Best</span>
+              </div>
+            </div>
+
+            <div>
+              <strong style="font-size: 13px; color: var(--text-secondary);">Optimal Ambulance Path:</strong>
+              <div class="path-pills" id="res-path-breadcrumbs">
+                <span style="font-size: 13px; color: var(--text-muted);">Run trace to view path...</span>
+              </div>
+            </div>
+
+            <!-- Alternative Route Comparison -->
+            <div id="second-route-box" style="margin-top: 14px; padding: 12px; background: var(--bg-surface-alt); border-radius: var(--r-md); font-size: 13px;">
+              <strong style="color: var(--text-main);">Second-Best Alternative Route:</strong>
+              <span id="second-route-details" style="color: var(--text-secondary); margin-left: 6px;">Evaluated after path settling.</span>
+            </div>
+
+            <!-- Interactive Road Hazard Simulator -->
+            <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-light);">
+              <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 8px 0; color: var(--text-main);">
+                🚧 Road Hazard Simulator: What happens if a road is blocked?
+              </h4>
+              <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+                Toggle closure on any road edge. Dijkstra will instantly re-evaluate and route the ambulance around the obstacle.
+              </p>
+
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <select id="select-toggle-road" class="form-control" style="max-width: 380px; font-size: 13px;"></select>
+                <button id="btn-toggle-closure" class="btn btn-secondary" style="font-size: 13px; font-weight: 600;">
+                  Toggle Road Closure & Re-Run
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Data Structures Panels -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+
+          <!-- Priority Queue Panel -->
+          <div class="card" style="padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin: 0; color: var(--text-main);">Min-Priority Queue (Binary Heap)</h3>
+              <span class="badge badge-assigned" id="pq-size-badge">0 items</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+              Greedy choice: Zone with smallest tentative distance is popped next.
+            </p>
+            <div class="pq-container" id="pq-container">
+              <span style="font-size: 12px; color: var(--text-muted);">Queue is empty</span>
+            </div>
+          </div>
+
+          <!-- Pseudocode Panel -->
+          <div class="card" style="padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin: 0; color: var(--text-main);">Dijkstra Pseudocode</h3>
+              <span class="badge" style="background:#1e3a8a; color:#38bdf8;" id="code-active-badge">Line 1</span>
+            </div>
+            <div class="code-panel">
+              <span class="code-line" id="code-l1">1: function Dijkstra(Graph, source, target):</span>
+              <span class="code-line" id="code-l2">2:   for each zone v: dist[v] = ∞, prev[v] = null</span>
+              <span class="code-line" id="code-l3">3:   dist[source] = 0; PQ.insert(source, 0)</span>
+              <span class="code-line" id="code-l4">4:   while PQ is not empty:</span>
+              <span class="code-line" id="code-l5">5:     u = PQ.extractMin()  // Smallest tentative time</span>
+              <span class="code-line" id="code-l6">6:     if u == target: break  // Settled optimal!</span>
+              <span class="code-line" id="code-l7">7:     mark u as finalized/visited</span>
+              <span class="code-line" id="code-l8">8:     for each open road (u, v) with time w:</span>
+              <span class="code-line" id="code-l9">9:       if dist[u] + w &lt; dist[v]:</span>
+              <span class="code-line" id="code-l10">10:        dist[v] = dist[u] + w; prev[v] = u; PQ.insert(v)</span>
+            </div>
+          </div>
+
+          <!-- Visited Order Breadcrumbs -->
+          <div class="card" style="padding: 16px;">
+            <h3 style="font-size: 14px; font-weight: 700; margin: 0 0 8px 0; color: var(--text-main);">Finalized Settled Order</h3>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">Order in which zones were finalized with proven shortest travel times:</p>
+            <div class="visited-chips" id="visited-chips">
+              <span style="font-size: 12px; color: var(--text-muted);">None settled yet</span>
+            </div>
+          </div>
+
+          <!-- Distance Table Panel -->
+          <div class="card" style="padding: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h3 style="font-size: 14px; font-weight: 700; margin: 0; color: var(--text-main);">Distance Table (All 12 Zones)</h3>
+              <span style="font-size: 11px; color: var(--text-muted);">Updated live</span>
+            </div>
+            <div class="dist-table-wrap">
+              <table class="dist-table">
+                <thead>
+                  <tr>
+                    <th>Zone</th>
+                    <th>Distance</th>
+                    <th>Prev</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dist-tbody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Educational Explainer Section -->
+      <section class="card" style="margin-top: 30px;">
+        <h2 style="font-size: 18px; font-weight: 700; margin: 0 0 6px 0; color: var(--text-main);">
+          Understanding Dijkstra's Algorithm in Nalam Nagar
+        </h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+          Created by Edsger W. Dijkstra in 1956, this algorithm solves the single-source shortest path problem on graphs with non-negative edge weights.
+        </p>
+
+        <div class="explainer-grid">
+          <div class="step-card">
+            <span class="step-num-badge">1</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; color: var(--text-main);">Initialization</h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              Assign tentative distance values: <strong>0.0 minutes</strong> to the start zone, and <strong>&infin; (infinity)</strong> to all other 11 zones. Add the start zone to the Priority Queue.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num-badge">2</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; color: var(--text-main);">Greedy Min Selection</h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              Always extract the unvisited zone with the <strong>smallest tentative travel time</strong> from the Min-Priority Queue. Because all road travel times are positive, this extracted distance is guaranteed to be optimal.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num-badge">3</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; color: var(--text-main);">Edge Relaxation</h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              For each open road leaving zone <em>u</em> to neighbor <em>v</em>: calculate alternative time <code>dist[u] + travelTime(u, v)</code>. If this is faster than <code>dist[v]</code>, update <code>dist[v]</code> and set <code>prev[v] = u</code>.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num-badge">4</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; color: var(--text-main);">Early Termination</h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              When the destination zone is popped from the Priority Queue, the shortest path is mathematically settled. The algorithm halts immediately without wasting cycles exploring irrelevant branches.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-num-badge">5</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; color: var(--text-main);">Path Reconstruction</h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              Starting at the destination, backtrack through the <code>previous</code> pointers to reconstruct the exact turn-by-turn route, total mileage (km), and cumulative response ETA (minutes).
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 20px;">
+          <div style="background: var(--bg-surface-alt); padding: 16px; border-radius: var(--r-md); border: 1px solid var(--border-light);">
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 6px 0; color: var(--text-main);">
+              ⏱️ Time Complexity: O((V + E) log V)
+            </h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              Our Java implementation uses a binary heap (<code>java.util.PriorityQueue</code>). With <strong>V = 12 zones</strong> and <strong>E = 16 roads (32 directed edges)</strong>, the route planner settles any path across the town in under <strong>0.1 milliseconds</strong>.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface-alt); padding: 16px; border-radius: var(--r-md); border: 1px solid var(--border-light);">
+            <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 6px 0; color: var(--text-main);">
+              🚑 How Dijkstra Powers Nalam Nagar Dispatches
+            </h4>
+            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+              Every emergency triggers Dijkstra twice:
+              <br>• <strong>Leg 1 (Ambulance ➔ Patient):</strong> Evaluates all available vehicle stations to dispatch the fastest ambulance.
+              <br>• <strong>Leg 2 (Patient ➔ Hospital):</strong> Calculates the fastest route to a facility equipped with matching medical specialties and free beds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

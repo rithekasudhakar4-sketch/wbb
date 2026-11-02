@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambulance Dispatch & Route Details | Nalam Nagar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- Friendly Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-emblem">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M2 12h20"/>
+        </svg>
+      </div>
+      <div class="brand-titles">
+        <span class="brand-name">NALAM NAGAR</span>
+        <span class="brand-sector">Ambulance Dispatch</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div>
+        <p class="nav-label">Main Menu</p>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <span>Dashboard Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="intake.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Request Ambulance</span>
+            </a>
+          </li>
+          <li>
+            <a href="queue.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+              <span>Active Emergencies</span>
+              <span class="nav-badge critical">14</span>
+            </a>
+          </li>
+          <li>
+            <a href="fleet.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <span>Ambulance Fleet</span>
+              <span class="nav-badge neutral">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="hospitals.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+              </svg>
+              <span>Hospitals & Beds</span>
+            </a>
+          </li>
+          <li>
+            <a href="traffic.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+              </svg>
+              <span>Roads & Traffic</span>
+            </a>
+          </li>
+          <li>
+            <a href="dijkstra.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="6" y1="9" x2="6" y2="15"/>
+              </svg>
+              <span>Dijkstra Visualizer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="nav-label">Records & Reports</p>
+        <ul class="nav-list">
+          <li>
+            <a href="history.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Trip History</span>
+            </a>
+          </li>
+          <li>
+            <a href="analytics.html" class="nav-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Response Stats</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="operator-badge">RM</div>
+      <div class="operator-meta">
+        <span class="operator-name">Officer R. Menon</span>
+        <span class="operator-role">On Duty Dispatcher</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Viewport -->
+  <div class="main-wrapper">
+
+    <!-- Top Header -->
+    <header class="top-header">
+      <div class="header-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="queue.html" style="color: var(--text-muted); text-decoration: none;">Emergency Queue</a>
+          <span class="sep">/</span>
+          <span class="current">Dispatch Case #REQ-101</span>
+        </nav>
+      </div>
+
+      <div class="header-center">
+        <div class="tactical-status-indicator">
+          <span class="pulse-dot"></span>
+          <span>Ambulance 2 Selected &bull; Fastest Route Calculated</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <a href="queue.html" class="btn-action btn-action-secondary" style="padding: 6px 14px; font-size: 12px;">
+          &larr; Back to Queue
+        </a>
+      </div>
+    </header>
+
+    <!-- Scrollable Content -->
+    <main class="viewport-content">
+
+      <!-- View Title -->
+      <div class="control-bar">
+        <div class="control-bar-titles">
+          <h1>Ambulance Trip & Live Route Details</h1>
+          <p>Review the recommended ambulance, estimated arrival times, and the matched receiving hospital.</p>
+        </div>
+        <div class="control-bar-actions">
+          <a href="fleet.html" class="btn-action btn-action-primary">
+            <span>View All Ambulances</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Emergency Overview Banner -->
+      <section class="panel-card" style="border-left: 5px solid var(--accent-red); margin-bottom: 22px;">
+        <div style="padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span class="badge badge-critical">Critical Emergency</span>
+              <strong style="font-size: 18px; color: var(--text-main);">Case #REQ-101: Ravi Sharma</strong>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0;">
+              📍 Location: <strong>Residential Colony A (Zone L3)</strong> &bull; Condition: <strong>Severe Burn Injury</strong>
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Journey Time</span>
+            <div style="font-size: 26px; font-weight: 800; color: var(--accent-red);">
+              24.0 Minutes Total
+            </div>
+            <span style="font-size: 12px; color: var(--text-secondary);">15m to patient + 9m to hospital</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2-Column Layout: Route Steps + Hospital Bed Reservation -->
+      <div style="display: grid; grid-template-columns: 1.8fr 1.2fr; gap: 22px;">
+
+        <!-- Left: Step-by-Step Route -->
+        <section class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+                <line x1="8" y1="2" x2="8" y2="18"/>
+                <line x1="16" y1="6" x2="16" y2="22"/>
+              </svg>
+              <h2>Two-Stage Trip Plan</h2>
+            </div>
+            <span class="panel-tag available">Shortest & Clearest Path</span>
+          </div>
+
+          <div style="padding: 22px; display: flex; flex-direction: column; gap: 18px;">
+
+            <!-- Stage 1 -->
+            <div style="padding: 16px; background-color: var(--bg-surface-alt); border-radius: var(--r-md); border-left: 4px solid var(--accent-blue);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <strong style="color: var(--accent-blue); font-size: 14px;">Stage 1: Ambulance drives to Patient</strong>
+                <span style="font-weight: 700; color: var(--text-main); font-size: 13px;">⏱️ 15.0 Mins (6.5 km)</span>
+              </div>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">
+                Ambulance: <strong>AMB-2</strong> currently stationed at <strong>Town Bus Terminal (L6)</strong>
+              </p>
+              <div style="padding: 8px 12px; background-color: #ffffff; border: 1px solid var(--border-light); border-radius: var(--r-sm); font-size: 12.5px; color: var(--text-main); font-weight: 500;">
+                🛣️ Bus Terminal (L6) &rarr; Market Circle (L2) &rarr; Residential Colony A (L3)
+              </div>
+            </div>
+
+            <!-- On Scene Care -->
+            <div style="padding: 12px 16px; background-color: var(--accent-red-bg); border: 1px solid var(--accent-red-border); border-radius: var(--r-md); display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 20px;">🩺</span>
+              <div>
+                <strong style="color: var(--accent-red); font-size: 13px;">Paramedic Care On Arrival:</strong>
+                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Paramedics initiate sterile burn dressing, fluid resuscitation, and high-flow oxygen.</p>
+              </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div style="padding: 16px; background-color: var(--bg-surface-alt); border-radius: var(--r-md); border-left: 4px solid var(--accent-green);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <strong style="color: var(--accent-green); font-size: 14px;">Stage 2: Patient transport to Hospital</strong>
+                <span style="font-weight: 700; color: var(--text-main); font-size: 13px;">⏱️ 9.0 Mins (4.0 km)</span>
+              </div>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">
+                Destination: <strong>Sanjeevani Burn & Critical Care (H4, College Road Sector)</strong>
+              </p>
+              <div style="padding: 8px 12px; background-color: #ffffff; border: 1px solid var(--border-light); border-radius: var(--r-sm); font-size: 12.5px; color: var(--text-main); font-weight: 500;">
+                🛣️ Residential Colony A (L3) &rarr; Direct to College Road (L5)
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Right: Hospital Reservation & Confirmation -->
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+
+          <section class="panel-card" style="margin-bottom: 0;">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/>
+                </svg>
+                <h2>Hospital Reservation</h2>
+              </div>
+              <span class="badge badge-assigned">Bed Held</span>
+            </div>
+
+            <div style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <strong style="font-size: 15px; color: var(--text-main);">Sanjeevani Burn Care (H4)</strong>
+                <span style="display: block; font-size: 12.5px; color: var(--text-secondary);">Zone L5 &bull; College Road Sector</span>
+              </div>
+
+              <div style="padding: 12px; background-color: var(--bg-surface-alt); border-radius: var(--r-md); font-size: 13px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Department:</span>
+                  <strong>Specialized Burn ICU</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Available Beds:</span>
+                  <strong style="color: var(--accent-green);">3 Beds Free</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">Doctor on Standby:</span>
+                  <strong>Burn Surgeon on Duty</strong>
+                </div>
+              </div>
+
+              <a href="queue.html" class="btn-action btn-action-primary" style="padding: 12px; text-align: center; justify-content: center; font-size: 14px; font-weight: 700;">
+                ✅ Confirm & Alert Driver (AMB-2)
+              </a>
+            </div>
+          </section>
+
+          <!-- Driver Contact Card -->
+          <div style="background-color: #ffffff; border: 1px solid var(--border-light); border-radius: var(--r-lg); padding: 18px; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent-blue-bg); color: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                🚑
+              </div>
+              <div>
+                <strong style="font-size: 14px; color: var(--text-main);">Ambulance 2 Crew</strong>
+                <span style="display: block; font-size: 12px; color: var(--text-secondary);">Driver: K. Sundaram &bull; Radio Ch. 3</span>
+              </div>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">
+              Vehicle equipped with Advanced Life Support (ALS), Cardiac Defibrillator, and Burn Sterile Trauma Kit.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

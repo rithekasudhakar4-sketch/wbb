@@ -805,17 +805,23 @@
 
     // Only intercept /api/ requests
     if (urlStr.includes('/api/')) {
-      const isGitHubPages = window.location.hostname.includes('github.io');
+      const isLocalHost = window.location.hostname === 'localhost' || 
+                          window.location.hostname === '127.0.0.1' || 
+                          window.location.origin.includes(':8080');
 
-      // If running on GitHub Pages, directly route to client-side engine (bypassing mixed content & failed local network calls)
-      if (isGitHubPages) {
+      // If running on a remote hosted environment (GitHub Pages, Netlify, custom domain, etc.),
+      // directly route to client-side engine (bypassing mixed content & failed local network calls)
+      if (!isLocalHost) {
         return window.SimulationEngineInstance.handleRequest(urlStr, init);
       }
 
-      // If on localhost / custom domain, try local Java server first. If it fails, fallback gracefully to simulation!
+      // If on localhost, try local Java server first. If it fails or returns 404, fallback gracefully to simulation!
       try {
         const res = await nativeFetch(resource, init);
-        return res;
+        if (res && res.status !== 404 && res.status !== 502 && res.status !== 503) {
+          return res;
+        }
+        return window.SimulationEngineInstance.handleRequest(urlStr, init);
       } catch (networkErr) {
         // Fallback to SimulationEngine
         return window.SimulationEngineInstance.handleRequest(urlStr, init);
